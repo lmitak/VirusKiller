@@ -1,0 +1,619 @@
+fileFormatVersion: 2
+guid: d6f54d39bbd485844b427caa6d4f45fe
+timeCreated: 1474709225
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: level1Virus_0
+    21300002: level1Virus_1
+    21300004: level1Virus_2
+    21300006: level1Virus_3
+    21300008: level1Virus_4
+    21300010: level1Virus_5
+    21300012: level1Virus_6
+    21300014: level1Virus_7
+    21300016: level1Virus_8
+    21300018: level1Virus_9
+    21300020: level1Virus_10
+    21300022: level1Virus_11
+    21300024: level1Virus_12
+    21300026: level1Virus_13
+    21300028: level1Virus_14
+    21300030: level1Virus_15
+    21300032: level1Virus_16
+    21300034: level1Virus_17
+    21300036: level1Virus_18
+    21300038: level1Virus_19
+    21300040: level1Virus_20
+    21300042: level1Virus_21
+    21300044: level1Virus_22
+    21300046: level1Virus_23
+    21300048: level1Virus_24
+    21300050: level1Virus_25
+    21300052: level1Virus_26
+    21300054: level1Virus_27
+    21300056: level1Virus_28
+    21300058: level1Virus_29
+    21300060: level1Virus_30
+    21300062: level1Virus_31
+    21300064: level1Virus_32
+    21300066: level1Virus_33
+    21300068: level1Virus_34
+    21300070: level1Virus_35
+    21300072: level1Virus_36
+    21300074: level1Virus_37
+    21300076: level1Virus_38
+    21300078: level1Virus_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 600
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: level1Virus_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2353
+        width: 311
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_1
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 2350
+        width: 309
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_2
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 2356
+        width: 303
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_3
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 2353
+        width: 300
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_4
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 2354
+        width: 299
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_5
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 2353
+        width: 299
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_6
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2354
+        width: 299
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_7
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1884
+        width: 302
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_8
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 1883
+        width: 303
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_9
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1883
+        width: 307
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_10
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1884
+        width: 311
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_11
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 1880
+        width: 299
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_12
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1880
+        width: 289
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_13
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 1885
+        width: 288
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_14
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1412
+        width: 273
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_15
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1413
+        width: 289
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_16
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1412
+        width: 289
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_17
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1412
+        width: 300
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_18
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1411
+        width: 312
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_19
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 1411
+        width: 313
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_20
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1409
+        width: 307
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_21
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 943
+        width: 303
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_22
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 939
+        width: 302
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_23
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 942
+        width: 299
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_24
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 940
+        width: 298
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_25
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 942
+        width: 299
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_26
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 940
+        width: 302
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_27
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 942
+        width: 304
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_28
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 468
+        width: 309
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_29
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 471
+        width: 313
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_30
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 468
+        width: 300
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_31
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 468
+        width: 289
+        height: 456
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_32
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 473
+        width: 290
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_33
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 471
+        width: 272
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_34
+      rect:
+        serializedVersion: 2
+        x: 2002
+        y: 473
+        width: 289
+        height: 445
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_35
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 290
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_36
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 0
+        width: 299
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_37
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 0
+        width: 312
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_38
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 0
+        width: 311
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: level1Virus_39
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 0
+        width: 312
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

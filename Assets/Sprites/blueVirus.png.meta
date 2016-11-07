@@ -1,0 +1,619 @@
+fileFormatVersion: 2
+guid: f35a369ac3d2f704b95c2976ddaaead8
+timeCreated: 1474881384
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: blueVirus_0
+    21300002: blueVirus_1
+    21300004: blueVirus_2
+    21300006: blueVirus_3
+    21300008: blueVirus_4
+    21300010: blueVirus_5
+    21300012: blueVirus_6
+    21300014: blueVirus_7
+    21300016: blueVirus_8
+    21300018: blueVirus_9
+    21300020: blueVirus_10
+    21300022: blueVirus_11
+    21300024: blueVirus_12
+    21300026: blueVirus_13
+    21300028: blueVirus_14
+    21300030: blueVirus_15
+    21300032: blueVirus_16
+    21300034: blueVirus_17
+    21300036: blueVirus_18
+    21300038: blueVirus_19
+    21300040: blueVirus_20
+    21300042: blueVirus_21
+    21300044: blueVirus_22
+    21300046: blueVirus_23
+    21300048: blueVirus_24
+    21300050: blueVirus_25
+    21300052: blueVirus_26
+    21300054: blueVirus_27
+    21300056: blueVirus_28
+    21300058: blueVirus_29
+    21300060: blueVirus_30
+    21300062: blueVirus_31
+    21300064: blueVirus_32
+    21300066: blueVirus_33
+    21300068: blueVirus_34
+    21300070: blueVirus_35
+    21300072: blueVirus_36
+    21300074: blueVirus_37
+    21300076: blueVirus_38
+    21300078: blueVirus_39
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 600
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: blueVirus_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_1
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_2
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_3
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_4
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_5
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_6
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 2850
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_8
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_9
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_10
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_11
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_12
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_13
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 2281
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_15
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_16
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_17
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_18
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_19
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_20
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 1712
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_22
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_23
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_24
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_25
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_26
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_27
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 1143
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_29
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_30
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_31
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_32
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_33
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_34
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 574
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_36
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 5
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_37
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 5
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_38
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 5
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: blueVirus_39
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 5
+        width: 559
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
