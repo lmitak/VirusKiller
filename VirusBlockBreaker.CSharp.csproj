@@ -86,8 +86,12 @@
     <Compile Include="Assets\ShredderController.cs" />
     <Compile Include="Assets\ShredderUIController.cs" />
     <Compile Include="Assets\StickyEffect.cs" />
+    <Compile Include="Assets\ToLevelSelectionMenuAction.cs" />
     <Compile Include="Assets\TransitionBall.cs" />
     <Compile Include="Assets\VirusColony.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\SpritesTile Shader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

@@ -75,8 +75,6 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadLevel(int level)
     {
-        Debug.Log("called; " + (level - 1) + "should be loaded,");
-        Debug.Log("sceneIndex: " + (levelsIndex[level - 1]));
         SceneManager.LoadScene(levelsIndex[level - 1]);
     }
 
@@ -98,7 +96,12 @@ public class LevelManager : MonoBehaviour {
 
     public int GetCurrentLevelNumber()
     {
-        return levelsIndex.IndexOf(SceneManager.GetActiveScene().buildIndex + 1);
+        return levelsIndex.IndexOf(SceneManager.GetActiveScene().buildIndex) + 1;
+    }
+
+    public int GetLevelCount()
+    {
+        return levelsIndex.Count;
     }
 
 }

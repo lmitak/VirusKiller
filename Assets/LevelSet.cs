@@ -46,7 +46,7 @@ public class LevelSet : MonoBehaviour {
             if (maxLevel != 0)
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                for (int level = 0; level < maxLevel + 1; level++)
+                for (int level = 0; (level < maxLevel + 1) && (level < levelManager.GetLevelCount()); level++)
                 {
                     levelBtnText.text = (level + 1).ToString();
 

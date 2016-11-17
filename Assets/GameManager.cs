@@ -69,6 +69,9 @@ public class GameManager : MonoBehaviour
         UpdateText(textTotalScore, playerTotalScore);
         UpdateText(textLife, playerLives);
         UpdateText(textLevelScore, playerLevelScore);
+
+        //playerData.GetAchievedLevel() > currentLevel
+        Debug.Log("Achievel level: " + playerData.GetAchievedLevel() + "\nCurrentLevel: " + currentLevel);
     }
 
     // Update is called once per frame
