@@ -6,16 +6,19 @@ using UnityEngine.UI;
 public class LevelSet : MonoBehaviour {
 
     public GameObject levelBtn;
-    //public Vector3 startingPos = new Vector3(-405, 707, 0);
-    public Vector3 startingPos = new Vector3(100, 1600, 0);
+    //public Vector3 startingPos = new Vector3(-2f, 3f, 0);
+    public Vector3 startingPos = new Vector3(150, 1500, 0);
     public float horizontalPadding = 15f;
     public float verticalPadding = 15f;
+    //public float horizontalPadding = .1f;
+    //public float verticalPadding = .1f;
 
     private PlayerData data;
     private LevelManager levelManager;
 
     private Text levelBtnText;
-    private Button levelBtnButton; 
+    private Button levelBtnButton;
+    private Camera mainCamera;
 
     void Awake()
     {
@@ -25,37 +28,42 @@ public class LevelSet : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        mainCamera = Camera.main;
+
         levelBtnText = levelBtn.GetComponentInChildren<Text>();
         levelBtnButton = levelBtn.GetComponentInChildren<Button>();
 
-        if(data == null)
+        float buttonWidth = levelBtnButton.GetComponent<RectTransform>().rect.width;
+        float buttonHeight = levelBtnButton.GetComponent<RectTransform>().rect.height;
+
+        if (data == null)
         {
             levelBtnText.text = "1";
-            Instantiate(levelBtn, startingPos, Quaternion.identity, transform);
-        }else
+            Instantiate(levelBtn, mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y)), Quaternion.identity, transform);
+        }
+        else
         {
             int maxLevel = data.GetAchievedLevel();
-            Debug.Log(maxLevel);
             if (maxLevel != 0)
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                for (int level = 0; level < maxLevel+1; level++)
+                for (int level = 0; level < maxLevel + 1; level++)
                 {
                     levelBtnText.text = (level + 1).ToString();
-                    
+
                     if (level == 0)
                     {
-                        newPos = startingPos;
+                        newPos = new Vector3(startingPos.x, startingPos.y, startingPos.z);
                     }
                     else if (level % 4 == 0)
                     {
-                        newPos = new Vector3(startingPos.x, newPos.y + 125 + verticalPadding, 0);
+                        newPos = new Vector3(startingPos.x, newPos.y + buttonHeight + verticalPadding, 0);
                     }
                     else
                     {
-                        newPos = newPos + new Vector3(horizontalPadding + 139, 0, 0);
+                        newPos = newPos + new Vector3(horizontalPadding + buttonWidth, 0, 0);
                     }
-                    Instantiate(levelBtn, newPos, Quaternion.identity, transform);
+                    Instantiate(levelBtn,  new Vector3(mainCamera.ScreenToWorldPoint(newPos).x, mainCamera.ScreenToWorldPoint(newPos).y), Quaternion.identity, transform);
                 }
                 //levelBtnText.text = levels.Count.ToString();
                 //Instantiate(levelBtn, levelBtn.GetComponent<Transform>().position + new Vector3(30, 0, 0), Quaternion.identity, transform);

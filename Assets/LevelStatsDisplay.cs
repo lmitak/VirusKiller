@@ -35,8 +35,14 @@ public class LevelStatsDisplay : MonoBehaviour {
             textBestScore.text = "0";
         }else
         {
-            int score = data.GetPointsOfLevel(level);
-            textBestScore.text = score.ToString();
+            if(data.GetAchievedLevel() < level)
+            {
+                textBestScore.text = "0";
+            }else
+            {
+                int score = data.GetPointsOfLevel(level);
+                textBestScore.text = score.ToString();
+            }
         }
 
         buttonPlay.onClick.AddListener(OnPlay);
@@ -56,6 +62,11 @@ public class LevelStatsDisplay : MonoBehaviour {
     public void MoveToBack()
     {
         transform.SetAsFirstSibling();
+    }
+
+    public bool isLastSibling()
+    {
+        return transform.GetSiblingIndex() == (transform.parent.childCount - 1);
     }
 
 }

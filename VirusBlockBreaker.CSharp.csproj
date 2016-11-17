@@ -75,6 +75,7 @@
     <Compile Include="Assets\Ball.cs" />
     <Compile Include="Assets\BlockController.cs" />
     <Compile Include="Assets\DataController.cs" />
+    <Compile Include="Assets\EscapeKeyController.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\LevelButtonController.cs" />
     <Compile Include="Assets\LevelManager.cs" />
@@ -83,7 +84,9 @@
     <Compile Include="Assets\Paddle.cs" />
     <Compile Include="Assets\PlayerStatsDisplay.cs" />
     <Compile Include="Assets\ShredderController.cs" />
+    <Compile Include="Assets\ShredderUIController.cs" />
     <Compile Include="Assets\StickyEffect.cs" />
+    <Compile Include="Assets\TransitionBall.cs" />
     <Compile Include="Assets\VirusColony.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

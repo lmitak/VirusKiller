@@ -30,6 +30,14 @@ public class LevelManager : MonoBehaviour {
         
     }
 
+    void Update()
+    {
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    LoadPreviousLevel();
+        //}
+    }
+
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -38,6 +46,26 @@ public class LevelManager : MonoBehaviour {
     public bool NextLevelExists()
     {
         return SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1;
+    }
+
+    /**What happens when player clicks 'Back' button**/
+    public void LoadPreviousLevel()
+    {
+        ///If player is in game, return him to the 'LevelSelectionScene'
+        if (PlayerInGame())
+        {
+            LoadLevelSelectionScene();
+        }
+
+        ///if 'Back' is not clicked on first scene, return him to the logo
+        if(SceneManager.GetActiveScene().buildIndex < 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+        else ///else quit the game
+        {
+            Application.Quit();
+        }
     }
 
     public void ReloadLevel()

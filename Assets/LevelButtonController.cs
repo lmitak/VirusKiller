@@ -8,15 +8,17 @@ public class LevelButtonController : MonoBehaviour {
     private Text text;
     private LevelManager levelManager;
     public GameObject downPanel;
-
     public LevelStatsDisplay levelStatsDisplay;
+
+    private TransitionBall transitionBall;
+    private Animator animator;
 
     void Awake()
     {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
 
-        //downPanel = GameObject.FindObjectOfType<PlayerStatsDisplay>().gameObject;
         levelStatsDisplay = GameObject.FindObjectOfType<LevelStatsDisplay>();
+        transitionBall = GameObject.FindObjectOfType<TransitionBall>();
     }
 
 	// Use this for initialization
@@ -34,9 +36,12 @@ public class LevelButtonController : MonoBehaviour {
 
     void ButtonOnClick()
     {
-        //Debug.Log("Button " + int.Parse(text.text) + " clicked");
-        //levelManager.LoadLevel(int.Parse(text.text));
         downPanel.SetActive(false);
-        levelStatsDisplay.DisplayPanel(int.Parse(text.text));
+
+        if (transitionBall.GetComponent<Rigidbody2D>().isKinematic)
+        {
+            transitionBall.KickVirusBall(int.Parse(text.text));
+        }
     }
+
 }
