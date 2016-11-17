@@ -12,10 +12,13 @@ public class Ball : MonoBehaviour {
     private Rigidbody2D ballRB;
     private float ballDiameter;
     private float lastPaddlePosX;
+    private float halfPaddleLength;
 
     //states
     private bool ballInGame;
     private bool ballOnPaddle;
+
+    
 
     // Use this for initialization
     void Start () {
@@ -26,6 +29,7 @@ public class Ball : MonoBehaviour {
 
         
         lastPaddlePosX = paddle.transform.position.x;
+        halfPaddleLength = paddle.GetComponent<SpriteRenderer>().bounds.extents.x;
         ResetBallOnPaddle();
 	}
 	
@@ -110,9 +114,29 @@ public class Ball : MonoBehaviour {
         /**If ball is on paddle don't detect collision**/
         if (!ballOnPaddle)
         {
-            /**Add additional velocity to ball to prevent infinite loop**/
-            float additionalRandomVelocityX = Random.Range(-collisionOffset, collisionOffset);
-            ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
+            if (collision.gameObject == paddle.gameObject)
+            {
+                float ballPositionX = gameObject.transform.position.x;
+                ///check hit offset from paddle-s center in percentage
+                float hitOffset = Mathf.Abs(ballPositionX) / (Mathf.Abs(lastPaddlePosX) + (Mathf.Abs(halfPaddleLength)));
+                ///hitOffset = Mathf.Clamp(hitOffset, 0f, 1f);
+                ///Check if the ball has hit paddle on the left side
+                if (ballPositionX < lastPaddlePosX)
+                {
+                    ///If it did, then move ball to the left
+                    ballRB.velocity = new Vector2(ballRB.velocity.x - hitOffset * collisionOffset, ballRB.velocity.y);
+                }
+                else if (gameObject.transform.position.x < lastPaddlePosX)///else check if it has hit the right side
+                {
+                    ///If it did, then move ball to the right
+                    ballRB.velocity = new Vector2(ballRB.velocity.x + hitOffset * collisionOffset, ballRB.velocity.y);
+                }
+            }else
+            {
+                /**Add additional velocity to ball to prevent infinite loop**/
+                float additionalRandomVelocityX = Random.Range(-(collisionOffset/2), (collisionOffset/2));
+                ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
+            }
 
             /**Play sound if ball collides with anything, except viruses**/
             if (!collision.gameObject.GetComponent<BlockController>())
