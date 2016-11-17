@@ -18,7 +18,7 @@ public class DataController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Load();
-        Debug.Log(playerData.GetPointsOfLevel(1));
+        
     }
 	
 	// Update is called once per frame

@@ -46,7 +46,7 @@ public class Paddle : MonoBehaviour {
             transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
         }
 
-        Debug.Log("Acceleration: " + Input.acceleration.x);
+        
 
         //Mobile version input
         if( Input.acceleration.x < (-accelerationThreshold))

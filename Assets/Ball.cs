@@ -55,12 +55,11 @@ public class Ball : MonoBehaviour {
 
         }
 
-
         if (ballOnPaddle)       //If ball is placed on the paddle, move it along with paddle when paddle is moved
         {
             KeepBallOnPaddle();
         }
-        lastPaddlePosX = paddle.transform.position.x;     
+        lastPaddlePosX = paddle.transform.position.x;
     }
 
     
@@ -108,13 +107,21 @@ public class Ball : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        float additionalRandomVelocityX = Random.Range(-collisionOffset, collisionOffset);
-        ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
-
-        if (!collision.gameObject.GetComponent<BlockController>())
+        /**If ball is on paddle don't detect collision**/
+        if (!ballOnPaddle)
         {
-            popSound.pitch = Random.Range(.8f, 1f);
-            popSound.Play();
+            /**Add additional velocity to ball to prevent infinite loop**/
+            float additionalRandomVelocityX = Random.Range(-collisionOffset, collisionOffset);
+            ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
+
+            /**Play sound if ball collides with anything, except viruses**/
+            if (!collision.gameObject.GetComponent<BlockController>())
+            {
+                popSound.pitch = Random.Range(.8f, 1f);
+                popSound.Play();
+            }
         }
+
+        
     }
 }

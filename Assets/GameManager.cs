@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
 
     public Text textTitle;
+    public Text textBestScore;
+    public Text labelBestScore;
     public GameObject btnRetry;
     public GameObject btnNextLevel;
     public GameObject btnBack;
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Text textTotalScore;
     public Text textLevelScore;
     public Text textLife;
-    public Text textBestScore;
+
     public int playerLives = 3;
 
     private int playerTotalScore;
@@ -73,6 +75,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Debug.Log("scoreAmount: " + playerScore);
+
+        ///When player uses back button on phone, return him to level selection scene
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            levelManager.LoadLevelSelectionScene();
+        }
+
     }
 
     public void IncreaseScore(int amount)
@@ -120,7 +129,6 @@ public class GameManager : MonoBehaviour
     {
         gameIsWon = true;
         textTitle.text = WIN;
-        textTitle.gameObject.SetActive(true);
 
         /**Check if the player has already won this level before**/
         if (playerData.GetAchievedLevel() > currentLevel)
@@ -139,7 +147,10 @@ public class GameManager : MonoBehaviour
             textBestScore.text = playerLevelScore.ToString();
         }
 
-
+        /**Display hidden UI objects**/
+        textTitle.gameObject.SetActive(true);
+        textBestScore.gameObject.SetActive(true);
+        labelBestScore.gameObject.SetActive(true);
         btnNextLevel.SetActive(true);
         btnRetry.SetActive(true);
         /**Change position of Retry button when game is won**/

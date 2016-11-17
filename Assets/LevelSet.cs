@@ -10,8 +10,6 @@ public class LevelSet : MonoBehaviour {
     public Vector3 startingPos = new Vector3(150, 1500, 0);
     public float horizontalPadding = 15f;
     public float verticalPadding = 15f;
-    //public float horizontalPadding = .1f;
-    //public float verticalPadding = .1f;
 
     private PlayerData data;
     private LevelManager levelManager;
@@ -39,7 +37,8 @@ public class LevelSet : MonoBehaviour {
         if (data == null)
         {
             levelBtnText.text = "1";
-            Instantiate(levelBtn, mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y)), Quaternion.identity, transform);
+            Vector3 worldPointPos = mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y));
+            Instantiate(levelBtn, new Vector3(worldPointPos.x, worldPointPos.y) , Quaternion.identity, transform);
         }
         else
         {
