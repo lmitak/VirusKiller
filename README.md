@@ -23,7 +23,7 @@ It consits of three main screens:
 Menu is used for chosing desired level and displays player statistics.  
 ### Level  
 Level consits of four units: paddle, ball, virus/bacteria enemies and power-ups.  
-Player uses a paddle to keep the ball in the game and with it he needs to destroy viruses. When all viruses are destroyed, player wins the level. When player fails to bounce back the ball with a paddle, he loses one life. Upon losing all lifes, he loses the game.  
+Player uses a paddle to keep the ball in the game and with it he needs to destroy viruses. When all viruses are destroyed, player wins the level. When player fails to bounce the ball back with a paddle, he loses one life. Upon losing all lifes, he loses the game.  
   
 Paddle is controlled by tilting phone to the right or the left.  
   
