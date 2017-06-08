@@ -35,16 +35,6 @@ public class GameManager : MonoBehaviour
     private static string WIN = "LEVEL COMPLETED!";
     //private static string FILE_NAME = "playerInfo.dat";
 
-    void Awake()
-    {
-        dataObj = GameObject.FindObjectOfType<DataController>();
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
-        playerData = dataObj.GetPlayerData();
-
-        //UpdateText(textScore, playerScore);
-        //UpdateText(textLife, playerLives);
-    }
-
     // Use this for initialization
     void Start()
     {
@@ -72,6 +62,16 @@ public class GameManager : MonoBehaviour
 
         //playerData.GetAchievedLevel() > currentLevel
         Debug.Log("Achievel level: " + playerData.GetAchievedLevel() + "\nCurrentLevel: " + currentLevel);
+    }
+
+    void Awake()
+    {
+        dataObj = GameObject.FindObjectOfType<DataController>();
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        playerData = dataObj.GetPlayerData();
+
+        //UpdateText(textScore, playerScore);
+        //UpdateText(textLife, playerLives);
     }
 
     // Update is called once per frame
