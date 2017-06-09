@@ -78,13 +78,14 @@ public class Ball : MonoBehaviour {
     /**Resets ball on the middle of the paddle**/
     public void ResetBallOnPaddle()
     {
-        transform.position = new Vector3(paddle.transform.position.x, 
-            paddle.transform.position.y + ballDiameter, 
-            paddle.transform.position.z);
-        ballRB.velocity = new Vector2();
-        SetBallOnPaddle(true);
+        PlaceBallOnPaddle(paddle.transform.position.x);
     }
 
+    /// <summary>
+    /// Places Ball object of positionX on the paddle
+    /// positionX cannot be out of bounds of the paddle
+    /// </summary>
+    /// <param name="positionX">x coordinate of ball</param>
     public void PlaceBallOnPaddle(float positionX)
     {
         transform.position = new Vector3(
@@ -114,6 +115,7 @@ public class Ball : MonoBehaviour {
     public void SetBallOnPaddle(bool state)
     {
         isBallOnPaddle = state;
+        ballRB.velocity = new Vector2();
         SetBallKinemtatic(state);
     }
 
