@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class DataController : MonoBehaviour {
 
+
+    public int startingLifePoints;
     private PlayerData playerData;
     private static string FILE_NAME = "playerInfo.dat";
 
@@ -18,7 +20,7 @@ public class DataController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Load();
-        
+        Debug.Log(playerData.ToString());
     }
 	
 	// Update is called once per frame

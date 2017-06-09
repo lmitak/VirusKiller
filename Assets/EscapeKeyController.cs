@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EscapeKeyController : MonoBehaviour {
 
@@ -42,7 +43,9 @@ public class EscapeKeyController : MonoBehaviour {
                 transitionBall.KickAntibacterialBall();
             }
         }
-
-
 	}
+
+
+
+
 }
