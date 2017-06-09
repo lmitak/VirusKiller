@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 
-    public float initialForce;
+    public float initialSpeed;
     public Paddle paddle;
     public AudioSource popSound;
     [Tooltip("Offset for preventing bouncing lock between paddle and edge")]
     public float collisionOffset = .25f;
-    
+
     private Rigidbody2D ballRB;
     private float ballDiameter;
     private float lastPaddlePosX;
@@ -16,14 +16,14 @@ public class Ball : MonoBehaviour {
 
     //states
     private bool ballInGame;
-    private bool ballOnPaddle;
+    private bool isBallOnPaddle;
 
     
 
     // Use this for initialization
     void Start () {
         ballInGame = false;
-        ballOnPaddle = true;
+        isBallOnPaddle = true;
         ballRB = GetComponent<Rigidbody2D>();
         ballDiameter = GetComponent<SpriteRenderer>().bounds.size.y;
 
@@ -32,26 +32,34 @@ public class Ball : MonoBehaviour {
         halfPaddleLength = paddle.GetComponent<SpriteRenderer>().bounds.extents.x;
         ResetBallOnPaddle();
 	}
+
 	
 	void FixedUpdate () {
 
+        Debug.Log("IsKinematic: " + ballRB.isKinematic);
+
+        if(!isBallOnPaddle)
+        {
+            /// Keep the ball on constant speed
+            ballRB.velocity = initialSpeed * (ballRB.velocity.normalized);
+        }
+
         //PC version input
-        if (Input.GetKeyDown(KeyCode.UpArrow) && ballOnPaddle)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isBallOnPaddle)
         {
             SetBallOnPaddle(false);
-            ballRB.velocity = new Vector2(0f, initialForce);
+            ballRB.velocity = new Vector2(0f, initialSpeed);
             if (paddle.GetBuff() == Paddle.Buffs.Sticky)
             {
                 paddle.RemoveStickyPaddle();
             }
-
         }
 
         //Mobile version input
-        if ( (Input.touchCount > 0) && ballOnPaddle)
+        if ( (Input.touchCount > 0) && isBallOnPaddle)
         {
             SetBallOnPaddle(false);
-            ballRB.velocity = new Vector2(0f, initialForce);
+            ballRB.velocity = new Vector2(0f, initialSpeed);
             if (paddle.GetBuff() == Paddle.Buffs.Sticky)
             {
                 paddle.RemoveStickyPaddle();
@@ -59,24 +67,25 @@ public class Ball : MonoBehaviour {
 
         }
 
-        if (ballOnPaddle)       //If ball is placed on the paddle, move it along with paddle when paddle is moved
+        /// If ball is placed on the paddle, move it along with paddle when paddle is moved
+        if (isBallOnPaddle)       
         {
             KeepBallOnPaddle();
         }
         lastPaddlePosX = paddle.transform.position.x;
     }
-
-    
     
     /**Resets ball on the middle of the paddle**/
     public void ResetBallOnPaddle()
     {
-        transform.position = new Vector3(paddle.transform.position.x, 
-            paddle.transform.position.y + ballDiameter, 
-            paddle.transform.position.z);
-        SetBallOnPaddle(true);
+        PlaceBallOnPaddle(paddle.transform.position.x);
     }
 
+    /// <summary>
+    /// Places Ball object of positionX on the paddle
+    /// positionX cannot be out of bounds of the paddle
+    /// </summary>
+    /// <param name="positionX">x coordinate of ball</param>
     public void PlaceBallOnPaddle(float positionX)
     {
         transform.position = new Vector3(
@@ -105,14 +114,15 @@ public class Ball : MonoBehaviour {
 
     public void SetBallOnPaddle(bool state)
     {
-        ballOnPaddle = state;
+        isBallOnPaddle = state;
+        ballRB.velocity = new Vector2();
         SetBallKinemtatic(state);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         /**If ball is on paddle don't detect collision**/
-        if (!ballOnPaddle)
+        if (!isBallOnPaddle)
         {
             if (collision.gameObject == paddle.gameObject)
             {
@@ -134,7 +144,7 @@ public class Ball : MonoBehaviour {
             }else
             {
                 /**Add additional velocity to ball to prevent infinite loop**/
-                float additionalRandomVelocityX = Random.Range(-(collisionOffset/2), (collisionOffset/2));
+                float additionalRandomVelocityX = Random.Range(-(collisionOffset / 2), (collisionOffset / 2));
                 ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
             }
 

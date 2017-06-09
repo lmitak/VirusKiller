@@ -20,7 +20,16 @@ public class LevelSet : MonoBehaviour {
 
     void Awake()
     {
-        data = GameObject.FindObjectOfType<DataController>().GetPlayerData();
+        DataController dataController = GameObject.FindObjectOfType<DataController>();
+        if(dataController != null)
+        {
+            data = GameObject.FindObjectOfType<DataController>().GetPlayerData();
+        } else
+        {
+            data = new PlayerData();
+        }
+       
+        
         levelManager = GameObject.FindObjectOfType<LevelManager>();
     }
     
@@ -34,40 +43,74 @@ public class LevelSet : MonoBehaviour {
         float buttonWidth = levelBtnButton.GetComponent<RectTransform>().rect.width;
         float buttonHeight = levelBtnButton.GetComponent<RectTransform>().rect.height;
 
-        if (data == null)
+
+        if(data != null && data.GetAchievedLevel() > 0)
+        {
+            Vector3 newPos = new Vector3(0, 0, 0);
+            for (int level = 0; (level < data.GetAchievedLevel() + 1) && (level < levelManager.GetLevelCount()); level++)
+            {
+                levelBtnText.text = (level + 1).ToString();
+
+                if (level == 0)
+                {
+                    newPos = new Vector3(startingPos.x, startingPos.y, startingPos.z);
+                }
+                else if (level % 4 == 0)
+                {
+                    newPos = new Vector3(startingPos.x, newPos.y + buttonHeight + verticalPadding, 0);
+                }
+                else
+                {
+                    newPos = newPos + new Vector3(horizontalPadding + buttonWidth, 0, 0);
+                }
+                Instantiate(levelBtn, new Vector3(mainCamera.ScreenToWorldPoint(newPos).x, mainCamera.ScreenToWorldPoint(newPos).y), Quaternion.identity, transform);
+            }
+        } else
         {
             levelBtnText.text = "1";
             Vector3 worldPointPos = mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y));
-            Instantiate(levelBtn, new Vector3(worldPointPos.x, worldPointPos.y) , Quaternion.identity, transform);
+            Instantiate(levelBtn, new Vector3(worldPointPos.x, worldPointPos.y), Quaternion.identity, transform);
         }
-        else
-        {
-            int maxLevel = data.GetAchievedLevel();
-            if (maxLevel != 0)
-            {
-                Vector3 newPos = new Vector3(0, 0, 0);
-                for (int level = 0; (level < maxLevel + 1) && (level < levelManager.GetLevelCount()); level++)
-                {
-                    levelBtnText.text = (level + 1).ToString();
+      
+        //if (data == null)
+        //{
+        //    levelBtnText.text = "1";
+        //    Vector3 worldPointPos = mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y));
+        //    Instantiate(levelBtn, new Vector3(worldPointPos.x, worldPointPos.y) , Quaternion.identity, transform);
+        //}
+        //else
+        //{
+        //    int maxLevel = data.GetAchievedLevel();
+        //    if (maxLevel != 0)
+        //    {
+        //        Vector3 newPos = new Vector3(0, 0, 0);
+        //        for (int level = 0; (level < maxLevel + 1) && (level < levelManager.GetLevelCount()); level++)
+        //        {
+        //            levelBtnText.text = (level + 1).ToString();
 
-                    if (level == 0)
-                    {
-                        newPos = new Vector3(startingPos.x, startingPos.y, startingPos.z);
-                    }
-                    else if (level % 4 == 0)
-                    {
-                        newPos = new Vector3(startingPos.x, newPos.y + buttonHeight + verticalPadding, 0);
-                    }
-                    else
-                    {
-                        newPos = newPos + new Vector3(horizontalPadding + buttonWidth, 0, 0);
-                    }
-                    Instantiate(levelBtn,  new Vector3(mainCamera.ScreenToWorldPoint(newPos).x, mainCamera.ScreenToWorldPoint(newPos).y), Quaternion.identity, transform);
-                }
-                //levelBtnText.text = levels.Count.ToString();
-                //Instantiate(levelBtn, levelBtn.GetComponent<Transform>().position + new Vector3(30, 0, 0), Quaternion.identity, transform);
-            }
-        }
+        //            if (level == 0)
+        //            {
+        //                newPos = new Vector3(startingPos.x, startingPos.y, startingPos.z);
+        //            }
+        //            else if (level % 4 == 0)
+        //            {
+        //                newPos = new Vector3(startingPos.x, newPos.y + buttonHeight + verticalPadding, 0);
+        //            }
+        //            else
+        //            {
+        //                newPos = newPos + new Vector3(horizontalPadding + buttonWidth, 0, 0);
+        //            }
+        //            Instantiate(levelBtn,  new Vector3(mainCamera.ScreenToWorldPoint(newPos).x, mainCamera.ScreenToWorldPoint(newPos).y), Quaternion.identity, transform);
+        //        }
+        //        //levelBtnText.text = levels.Count.ToString();
+        //        //Instantiate(levelBtn, levelBtn.GetComponent<Transform>().position + new Vector3(30, 0, 0), Quaternion.identity, transform);
+        //    } else
+        //    {
+        //        levelBtnText.text = "1";
+        //        Vector3 worldPointPos = mainCamera.ScreenToWorldPoint(new Vector3(startingPos.x, startingPos.y));
+        //        Instantiate(levelBtn, new Vector3(worldPointPos.x, worldPointPos.y), Quaternion.identity, transform);
+        //    }
+        //}
 
     }
 
