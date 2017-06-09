@@ -3,7 +3,10 @@ using System.Collections;
 
 public class Paddle : MonoBehaviour {
 
+    //for panel movement (pc)
     public float movementStep;
+    //for panel movement (phone)
+    public float movementFactor = 15.0f;
     public Sprite stickyPaddleSprite;
     public float accelerationThreshold = .15f;
 
@@ -30,37 +33,44 @@ public class Paddle : MonoBehaviour {
         
         defaultSprite = spriteRenderer.sprite;
 	}
-	
-	
-	void FixedUpdate () {
+
+
+    void FixedUpdate() {
+
+        float movementX;
 
         //PC version input
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            float movementX = Mathf.Clamp(transform.position.x - movementStep * Time.deltaTime, -maxWidth, maxWidth);
+            movementX = Mathf.Clamp(transform.position.x - movementStep * Time.deltaTime, -maxWidth, maxWidth);
             transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            float movementX = Mathf.Clamp(transform.position.x + movementStep * Time.deltaTime, -maxWidth, maxWidth);
+            movementX = Mathf.Clamp(transform.position.x + movementStep * Time.deltaTime, -maxWidth, maxWidth);
             transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
         }
 
-        
+
 
         //Mobile version input
-        if( Input.acceleration.x < (-accelerationThreshold))
+        //if( Input.acceleration.x < (-accelerationThreshold))
+        //{
+        //    float movementX = Mathf.Clamp(transform.position.x - movementStep * Time.deltaTime, -maxWidth, maxWidth);
+        //    transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
+        //}
+        //if( Input.acceleration.x > accelerationThreshold)
+        //{
+        //    float movementX = Mathf.Clamp(transform.position.x + movementStep * Time.deltaTime, -maxWidth, maxWidth);
+        //    transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
+        //}
+        if (Input.acceleration.magnitude > 0)
         {
-            float movementX = Mathf.Clamp(transform.position.x - movementStep * Time.deltaTime, -maxWidth, maxWidth);
+            movementStep = Mathf.Sign(Input.acceleration.x) * Mathf.Pow(Input.acceleration.x, 2f) * movementFactor;
+            
+            movementX = Mathf.Clamp(transform.position.x + movementStep * Time.deltaTime, -maxWidth, maxWidth);
             transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
         }
-        if( Input.acceleration.x > accelerationThreshold)
-        {
-            float movementX = Mathf.Clamp(transform.position.x + movementStep * Time.deltaTime, -maxWidth, maxWidth);
-            transform.position = new Vector3(movementX, transform.position.y, transform.position.z);
-        }
-
-
     }
 
     void OnCollisionEnter2D(Collision2D collision)
