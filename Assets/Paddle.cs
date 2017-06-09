@@ -84,7 +84,7 @@ public class Paddle : MonoBehaviour {
 
     public void ApplyStickyPaddle()
     {
-        buff = Buffs.Sticky;
+        //buff = Buffs.Sticky;
         spriteRenderer.sprite = stickyPaddleSprite;
     }
 

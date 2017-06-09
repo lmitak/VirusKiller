@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 
-    public float initialForce;
+    public float initialSpeed;
     public Paddle paddle;
     public AudioSource popSound;
     [Tooltip("Offset for preventing bouncing lock between paddle and edge")]
     public float collisionOffset = .25f;
-    
+
     private Rigidbody2D ballRB;
     private float ballDiameter;
     private float lastPaddlePosX;
@@ -32,14 +32,18 @@ public class Ball : MonoBehaviour {
         halfPaddleLength = paddle.GetComponent<SpriteRenderer>().bounds.extents.x;
         ResetBallOnPaddle();
 	}
+
 	
 	void FixedUpdate () {
+
+        /// Keep the ball on constant speed
+        ballRB.velocity = initialSpeed * (ballRB.velocity.normalized);
 
         //PC version input
         if (Input.GetKeyDown(KeyCode.UpArrow) && ballOnPaddle)
         {
             SetBallOnPaddle(false);
-            ballRB.velocity = new Vector2(0f, initialForce);
+            ballRB.velocity = new Vector2(0f, initialSpeed);
             if (paddle.GetBuff() == Paddle.Buffs.Sticky)
             {
                 paddle.RemoveStickyPaddle();
@@ -51,7 +55,7 @@ public class Ball : MonoBehaviour {
         if ( (Input.touchCount > 0) && ballOnPaddle)
         {
             SetBallOnPaddle(false);
-            ballRB.velocity = new Vector2(0f, initialForce);
+            ballRB.velocity = new Vector2(0f, initialSpeed);
             if (paddle.GetBuff() == Paddle.Buffs.Sticky)
             {
                 paddle.RemoveStickyPaddle();
@@ -65,8 +69,6 @@ public class Ball : MonoBehaviour {
         }
         lastPaddlePosX = paddle.transform.position.x;
     }
-
-    
     
     /**Resets ball on the middle of the paddle**/
     public void ResetBallOnPaddle()
@@ -134,7 +136,7 @@ public class Ball : MonoBehaviour {
             }else
             {
                 /**Add additional velocity to ball to prevent infinite loop**/
-                float additionalRandomVelocityX = Random.Range(-(collisionOffset/2), (collisionOffset/2));
+                float additionalRandomVelocityX = Random.Range(-(collisionOffset / 2), (collisionOffset / 2));
                 ballRB.velocity = new Vector2(ballRB.velocity.x + additionalRandomVelocityX, ballRB.velocity.y);
             }
 
