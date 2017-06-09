@@ -16,14 +16,14 @@ public class Ball : MonoBehaviour {
 
     //states
     private bool ballInGame;
-    private bool ballOnPaddle;
+    private bool isBallOnPaddle;
 
     
 
     // Use this for initialization
     void Start () {
         ballInGame = false;
-        ballOnPaddle = true;
+        isBallOnPaddle = true;
         ballRB = GetComponent<Rigidbody2D>();
         ballDiameter = GetComponent<SpriteRenderer>().bounds.size.y;
 
@@ -36,11 +36,16 @@ public class Ball : MonoBehaviour {
 	
 	void FixedUpdate () {
 
-        /// Keep the ball on constant speed
-        ballRB.velocity = initialSpeed * (ballRB.velocity.normalized);
+        Debug.Log("IsKinematic: " + ballRB.isKinematic);
+
+        if(!isBallOnPaddle)
+        {
+            /// Keep the ball on constant speed
+            ballRB.velocity = initialSpeed * (ballRB.velocity.normalized);
+        }
 
         //PC version input
-        if (Input.GetKeyDown(KeyCode.UpArrow) && ballOnPaddle)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isBallOnPaddle)
         {
             SetBallOnPaddle(false);
             ballRB.velocity = new Vector2(0f, initialSpeed);
@@ -48,11 +53,10 @@ public class Ball : MonoBehaviour {
             {
                 paddle.RemoveStickyPaddle();
             }
-
         }
 
         //Mobile version input
-        if ( (Input.touchCount > 0) && ballOnPaddle)
+        if ( (Input.touchCount > 0) && isBallOnPaddle)
         {
             SetBallOnPaddle(false);
             ballRB.velocity = new Vector2(0f, initialSpeed);
@@ -63,7 +67,8 @@ public class Ball : MonoBehaviour {
 
         }
 
-        if (ballOnPaddle)       //If ball is placed on the paddle, move it along with paddle when paddle is moved
+        /// If ball is placed on the paddle, move it along with paddle when paddle is moved
+        if (isBallOnPaddle)       
         {
             KeepBallOnPaddle();
         }
@@ -76,6 +81,7 @@ public class Ball : MonoBehaviour {
         transform.position = new Vector3(paddle.transform.position.x, 
             paddle.transform.position.y + ballDiameter, 
             paddle.transform.position.z);
+        ballRB.velocity = new Vector2();
         SetBallOnPaddle(true);
     }
 
@@ -107,14 +113,14 @@ public class Ball : MonoBehaviour {
 
     public void SetBallOnPaddle(bool state)
     {
-        ballOnPaddle = state;
+        isBallOnPaddle = state;
         SetBallKinemtatic(state);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         /**If ball is on paddle don't detect collision**/
-        if (!ballOnPaddle)
+        if (!isBallOnPaddle)
         {
             if (collision.gameObject == paddle.gameObject)
             {
