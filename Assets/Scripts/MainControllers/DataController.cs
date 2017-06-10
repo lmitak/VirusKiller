@@ -7,14 +7,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class DataController : MonoBehaviour {
 
+    private static DataController dcInstance;
 
     public int startingLifePoints;
     private PlayerData playerData;
     private static string FILE_NAME = "playerInfo.dat";
+    private DataProvider provider;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);  
+        if(dcInstance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            dcInstance = this;
+        } else if (dcInstance != this)
+        {
+            Destroy(gameObject);
+        }
+        if(playerData != null)
+        {
+            provider.setData(playerData);
+        }
     }
 
     // Use this for initialization
@@ -60,6 +73,14 @@ public class DataController : MonoBehaviour {
     public PlayerData GetPlayerData()
     {
         return playerData;
+    }
+
+    private DataController()
+    { }
+
+    public static DataController GetInstance()
+    {
+        return dcInstance;
     }
 }
 
@@ -173,4 +194,9 @@ public class PlayerData
             + "\nScore: " + totalPoints;
     }
 
+}
+
+public interface DataProvider
+{
+    void setData(PlayerData data);
 }

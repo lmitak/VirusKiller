@@ -155,7 +155,7 @@ public class Ball : MonoBehaviour {
             }
 
             /**Play sound if ball collides with anything, except viruses**/
-            if (!collision.gameObject.GetComponent<BlockController>())
+            if (!collision.gameObject.GetComponent<Enemy>())
             {
                 popSound.pitch = Random.Range(.8f, 1f);
                 popSound.Play();

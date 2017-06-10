@@ -20,15 +20,11 @@ public class LevelSet : MonoBehaviour {
 
     void Awake()
     {
-        DataController dataController = GameObject.FindObjectOfType<DataController>();
-        if(dataController != null)
-        {
-            data = GameObject.FindObjectOfType<DataController>().GetPlayerData();
-        } else
+        data = DataController.GetInstance().GetPlayerData();
+        if(data == null)
         {
             data = new PlayerData();
         }
-       
         
         levelManager = GameObject.FindObjectOfType<LevelManager>();
     }

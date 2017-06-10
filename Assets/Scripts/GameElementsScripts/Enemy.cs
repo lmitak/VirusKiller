@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockController : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     public int life;
     public int points;
-    public GameManager manager;
+    public ScoreSystem scoreSystem;
     public AudioClip gruntSound;
     
     
@@ -54,7 +54,8 @@ public class BlockController : MonoBehaviour {
 
     private void OnDeath()
     {
-        manager.IncreaseScore(points);
+        //manager.IncreaseScore(points);
+        scoreSystem.IncreaseScore(points);
 
         virusDeathParticles.transform.parent = null;
         virusDeathParticles.Play();
