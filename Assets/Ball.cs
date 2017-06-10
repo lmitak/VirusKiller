@@ -4,6 +4,7 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
     public float initialSpeed;
+    public float speedAccelerationOverTime = 0.01f;
     public Paddle paddle;
     public AudioSource popSound;
     [Tooltip("Offset for preventing bouncing lock between paddle and edge")]
@@ -13,6 +14,7 @@ public class Ball : MonoBehaviour {
     private float ballDiameter;
     private float lastPaddlePosX;
     private float halfPaddleLength;
+    private float speed;
 
     //states
     private bool ballInGame;
@@ -26,7 +28,7 @@ public class Ball : MonoBehaviour {
         isBallOnPaddle = true;
         ballRB = GetComponent<Rigidbody2D>();
         ballDiameter = GetComponent<SpriteRenderer>().bounds.size.y;
-
+        speed = initialSpeed;
         
         lastPaddlePosX = paddle.transform.position.x;
         halfPaddleLength = paddle.GetComponent<SpriteRenderer>().bounds.extents.x;
@@ -36,12 +38,13 @@ public class Ball : MonoBehaviour {
 	
 	void FixedUpdate () {
 
-        Debug.Log("IsKinematic: " + ballRB.isKinematic);
-
         if(!isBallOnPaddle)
         {
             /// Keep the ball on constant speed
-            ballRB.velocity = initialSpeed * (ballRB.velocity.normalized);
+            //ballRB.velocity = initialSpeed * ballRB.velocity.normalized;
+            /// Accelerate the ball
+            speed += speedAccelerationOverTime * Time.deltaTime;
+            ballRB.velocity = speed * ballRB.velocity.normalized;
         }
 
         //PC version input
