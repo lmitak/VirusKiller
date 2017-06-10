@@ -112,13 +112,16 @@ public class Ball : MonoBehaviour {
 
     public void SetBallKinemtatic(bool state)
     {
+        if(state)
+        {
+            ballRB.velocity = new Vector2();
+        }
         ballRB.isKinematic = state;
     }
 
     public void SetBallOnPaddle(bool state)
     {
         isBallOnPaddle = state;
-        ballRB.velocity = new Vector2();
         SetBallKinemtatic(state);
     }
 
