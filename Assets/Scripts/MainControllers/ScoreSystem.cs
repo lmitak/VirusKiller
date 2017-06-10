@@ -51,15 +51,6 @@ void Start () {
         }
     }
 
-    //public void IncreaseScore(int amount)
-    //{
-    //    playerTotalScore = playerTotalScore + amount;
-    //    playerLevelScore += amount;
-
-    //    UpdateText(textTotalScore, playerTotalScore);
-    //    UpdateText(textLevelScore, playerLevelScore);
-    //}
-
     private void UpdateText(Text textObj, int amount)
     {
         textObj.text = textObj.text.Substring(0, textObj.text.IndexOf(" ") + 1) + amount;

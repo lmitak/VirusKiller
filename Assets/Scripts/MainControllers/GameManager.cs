@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
     private DataController dataController;
     private PlayerData playerData = null;
 
-    
-    //private static string FILE_NAME = "playerInfo.dat";
-
     // Use this for initialization
     void Start()
     {
@@ -64,7 +61,6 @@ public class GameManager : MonoBehaviour
         {
             levelManager.LoadLevelSelectionScene();
         }
-
     }
 
     public void BallLost()
@@ -82,13 +78,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void GameOver(bool hasPlayerWon)
-    //{
-    //    //get player level score
-    //    ball.SetBallKinemtatic(true);
-    //}
-
-    
     public void GameWon()
     {
         isGameWon = true;
@@ -114,20 +103,6 @@ public class GameManager : MonoBehaviour
     /**OnClick actions for 'Next level' and 'Back' buttons**/
     public void BtnNextLevelAction()
     {
-        ///**Check if the player has already won this level before**/
-        //if (playerData.GetAchievedLevel() > currentLevel)
-        //{
-        //    int oldLevelScore = playerData.GetPointsOfLevel(currentLevel);
-        //    /**If his new score is better then the last one, save it**/
-        //    if (oldLevelScore < playerLevelScore)
-        //    {
-        //        GameSave();
-        //    }
-        //}
-        //else //if he didn't, save new score
-        //{
-        //    GameSave();
-        //}
         /// If current level is higher than the last achieved level or new score of current level is higher than the old one, save game 
         if ((playerData.GetAchievedLevel() < currentLevel) || (playerData.GetPointsOfLevel(currentLevel) < playerLevelScore))
         {
@@ -138,25 +113,6 @@ public class GameManager : MonoBehaviour
 
     public void BtnBackAction()
     {
-        ///**If game is won, save data before leaving current level**/
-        //if (isGameWon)
-        //{
-        //    /**Check if the player has already won this level before**/
-        //    if (playerData.GetAchievedLevel() > currentLevel)
-        //    {
-        //        int oldLevelScore = playerData.GetPointsOfLevel(currentLevel);
-        //        /**If his new score is better then the last one, save it**/
-        //        if (oldLevelScore < playerLevelScore)
-        //        {
-        //            GameSave();
-        //        }
-        //    }
-        //    else //if he didn't, save new score
-        //    {
-        //        GameSave();
-        //    }
-        //}
-
         if (isGameWon)
         {
             /// If current level is higher than the last achieved level or new score of current level is higher than the old one, save game 

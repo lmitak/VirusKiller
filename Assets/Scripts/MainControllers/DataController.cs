@@ -186,14 +186,12 @@ public class PlayerData
         }
     }
 
-    
     override public string ToString()
     {
         return "Max level: " + achievedLevel
             + "\nLives: " + lifePoints
             + "\nScore: " + totalPoints;
     }
-
 }
 
 public interface DataProvider
