@@ -40,7 +40,7 @@ public class LevelStatsDisplay : MonoBehaviour {
                 textBestScore.text = "0";
             }else
             {
-                int score = data.achievedLevel;
+                int score = data.GetPlayerStatsForLevel(level).highscore;
                 textBestScore.text = score.ToString();
             }
         }

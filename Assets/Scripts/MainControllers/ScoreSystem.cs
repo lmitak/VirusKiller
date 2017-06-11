@@ -29,7 +29,6 @@ void Start () {
 
         baseLifeThreshold = newLifeThreshold;
         newLifeThreshold = getNextLifeThreshold();
-        Debug.Log("Threshold: " + newLifeThreshold);
 
         UpdateText(lblTotalScore, totalScore);
         UpdateText(lblLives, currentLives);
