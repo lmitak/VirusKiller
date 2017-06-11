@@ -14,8 +14,8 @@ public class LevelStatsDisplay : MonoBehaviour {
 
     void Awake()
     {
-        manager = GameObject.FindObjectOfType<LevelManager>();
-        data = GameObject.FindObjectOfType<DataController>().GetPlayerData();
+        manager = LevelManager.GetInstance();
+        data = DataController.GetInstance().playerData;
     }
 
 	// Use this for initialization
@@ -35,12 +35,12 @@ public class LevelStatsDisplay : MonoBehaviour {
             textBestScore.text = "0";
         }else
         {
-            if(data.GetAchievedLevel() < level)
+            if(data.achievedLevel < level)
             {
                 textBestScore.text = "0";
             }else
             {
-                int score = data.GetPointsOfLevel(level);
+                int score = data.achievedLevel;
                 textBestScore.text = score.ToString();
             }
         }

@@ -21,7 +21,7 @@ public class GameOverScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentLevel = LevelManager.GetInstance().GetCurrentLevelNumber();
-        playerData = DataController.GetInstance().GetPlayerData();
+        playerData = DataController.GetInstance().playerData;
     }
 	
 	// Update is called once per frame
@@ -35,9 +35,9 @@ public class GameOverScreen : MonoBehaviour {
         lblTitle.text = winText;
 
         /**Check if the player has already won this level before**/
-        if (playerData.GetAchievedLevel() > currentLevel)
+        if (playerData.achievedLevel > currentLevel)
         {
-            int oldLevelScore = playerData.GetPointsOfLevel(currentLevel);
+            int oldLevelScore = playerData.GetPlayerStatsForLevel(currentLevel).highscore;
             /**If his new score is better then the last one, display it as new best score**/
             if (oldLevelScore < newScore)
             {

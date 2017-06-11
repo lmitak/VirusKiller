@@ -11,7 +11,7 @@ public class LevelSet : MonoBehaviour {
     public float horizontalPadding = 15f;
     public float verticalPadding = 15f;
 
-    private PlayerData data;
+    private PlayerData playerData;
     private LevelManager levelManager;
 
     private Text levelBtnText;
@@ -20,13 +20,13 @@ public class LevelSet : MonoBehaviour {
 
     void Awake()
     {
-        data = DataController.GetInstance().GetPlayerData();
-        if(data == null)
+        playerData = DataController.GetInstance().playerData;
+        if(playerData == null)
         {
-            data = new PlayerData();
+            playerData = new PlayerData();
         }
         
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        levelManager = LevelManager.GetInstance();
     }
     
 	// Use this for initialization
@@ -40,10 +40,10 @@ public class LevelSet : MonoBehaviour {
         float buttonHeight = levelBtnButton.GetComponent<RectTransform>().rect.height;
 
 
-        if(data != null && data.GetAchievedLevel() > 0)
+        if(playerData != null && playerData.achievedLevel > 0)
         {
             Vector3 newPos = new Vector3(0, 0, 0);
-            for (int level = 0; (level < data.GetAchievedLevel() + 1) && (level < levelManager.GetLevelCount()); level++)
+            for (int level = 0; (level < playerData.achievedLevel + 1) && (level < levelManager.GetLevelCount()); level++)
             {
                 levelBtnText.text = (level + 1).ToString();
 

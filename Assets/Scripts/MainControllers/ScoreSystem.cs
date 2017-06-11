@@ -16,14 +16,18 @@ public class ScoreSystem : MonoBehaviour {
     private int currentLives;
     private int currentLevelScore;
     private int totalScore;
+    private int livesGain;
 
 // Use this for initialization
 void Start () {
-        savedPlayerData = DataController.GetInstance().GetPlayerData();
-        currentLives = savedPlayerData.GetLifePoints();
-        totalScore = savedPlayerData.GetTotalPoints();
+        savedPlayerData = DataController.GetInstance().playerData;
+        currentLives = savedPlayerData.totalLives;
+        totalScore = savedPlayerData.totalScore;
+        livesGain = savedPlayerData.livesGain;
         currentLevelScore = 0;
-        
+
+        newLifeThreshold += addToThreshoeld * livesGain; 
+
         UpdateText(lblTotalScore, totalScore);
         UpdateText(lblLives, currentLives);
     }
@@ -48,6 +52,8 @@ void Start () {
         if(totalScore >= newLifeThreshold)
         {
             UpdateText(lblLives, ++currentLives);
+            newLifeThreshold += addToThreshoeld;
+            livesGain++;
         }
     }
 
@@ -66,4 +72,8 @@ void Start () {
         return totalScore;
     }
 
+    public PlayerData GetNewPlayerData()
+    {
+        return new PlayerData(currentLives, totalScore, livesGain);
+    }
 }

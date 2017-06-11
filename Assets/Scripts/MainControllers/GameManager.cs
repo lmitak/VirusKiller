@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public int playerLives = 3;
 
-    private int playerTotalScore;
     private int playerLevelScore;
     
     private bool isGameWon;
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     private LevelManager levelManager;
     private DataController dataController;
     private PlayerData playerData = null;
+    private PlayerData newPlayerData = null;
 
     // Use this for initialization
     void Start()
@@ -30,19 +30,17 @@ public class GameManager : MonoBehaviour
         levelManager = LevelManager.GetInstance();
         currentLevel = levelManager.GetCurrentLevelNumber();
         dataController = DataController.GetInstance();
-        playerData = dataController.GetPlayerData();
+        playerData = dataController.playerData;
 
         if (playerData != null)
         {
-            playerLives = playerData.GetLifePoints();
-            playerTotalScore = playerData.GetTotalPoints();
+            playerLives = playerData.totalLives;
+            
         }
         else
         {
-            playerData = new PlayerData();
-            playerData.SetLifePoints(playerLives);
-            playerData.SetTotalPoints(0);
-            playerTotalScore = 0;
+            playerLives = DataController.GetInstance().startingLifePoints;
+            playerData = PlayerData.NewPlayer(playerLives);
         }
         isGameWon = false;
     }
@@ -81,22 +79,29 @@ public class GameManager : MonoBehaviour
     public void GameWon()
     {
         isGameWon = true;
-        playerTotalScore = scoreSystem.GetTotalScore();
+        newPlayerData = scoreSystem.GetNewPlayerData();
         playerLevelScore = scoreSystem.GetCurrentLevelScore();
         ball.SetBallKinemtatic(true);
-        gameOverScreen.ShowWinScreen(playerTotalScore);
+        gameOverScreen.ShowWinScreen(newPlayerData.totalScore);
     }
 
     //Save game progress
     public void GameSave()
     {
-        playerData.SetLivesLostAndScoreOfLevel(currentLevel,
-            playerData.GetLifePoints() - playerLives,
-            playerTotalScore - playerData.GetTotalPoints());
-        playerData.SetLifePoints(playerLives);
-        playerData.SetTotalPoints(playerTotalScore);
+        //playerData.SetLivesLostAndScoreOfLevel(currentLevel,
+        //    playerData.GetLifePoints() - playerLives,
+        //    playerTotalScore - playerData.GetTotalPoints());
+        //playerData.SetLifePoints(playerLives);
+        //playerData.SetTotalPoints(playerTotalScore);
 
-        dataController.SetPlayerData(playerData);
+
+        PlayerLevelStats levelStats = new PlayerLevelStats(currentLevel, playerLevelScore);
+        playerData.AddStatsForNewLevel(levelStats);
+        playerData.totalScore = newPlayerData.totalScore;
+        playerData.totalLives = newPlayerData.totalLives;
+        playerData.livesGain = newPlayerData.livesGain;
+
+        dataController.playerData = playerData;
         dataController.Save();
     }
 
@@ -104,7 +109,7 @@ public class GameManager : MonoBehaviour
     public void BtnNextLevelAction()
     {
         /// If current level is higher than the last achieved level or new score of current level is higher than the old one, save game 
-        if ((playerData.GetAchievedLevel() < currentLevel) || (playerData.GetPointsOfLevel(currentLevel) < playerLevelScore))
+        if ((playerData.achievedLevel < currentLevel) || (playerData.GetPlayerStatsForLevel(currentLevel).highscore < playerLevelScore))
         {
             GameSave();
         }
@@ -116,7 +121,7 @@ public class GameManager : MonoBehaviour
         if (isGameWon)
         {
             /// If current level is higher than the last achieved level or new score of current level is higher than the old one, save game 
-            if( (playerData.GetAchievedLevel() < currentLevel) || (playerData.GetPointsOfLevel(currentLevel) < playerLevelScore) )
+            if( (playerData.achievedLevel < currentLevel) || (playerData.GetPlayerStatsForLevel(currentLevel).highscore < playerLevelScore) )
             {
                 GameSave();
             }
@@ -126,8 +131,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public List<int> GetPlayerLevels()
-    {
-        return playerData.GetLevelPoints();
-    }
+    //public List<int> GetPlayerLevels()
+    //{
+    //    return playerData.GetLevelPoints();
+    //}
 }
