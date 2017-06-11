@@ -15,14 +15,14 @@ public class Enemy : MonoBehaviour {
     private int currentLife;
     private AudioSource audioSource;
     private Animator animator;
-
+    private DeathAnnouncement deathAnnouncement;
 
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentLife = life;
-        
+        deathAnnouncement = transform.parent.GetComponent<VirusColony>();
 	}
 	
 	// Update is called once per frame
@@ -65,6 +65,12 @@ public class Enemy : MonoBehaviour {
         Destroy(virusDeathParticles.gameObject, virusDeathAudio.clip.length);
         //Destroy(gameObject);
         gameObject.SetActive(false);
+        deathAnnouncement.ImGonnaDie(this);
     }
 
+}
+
+public interface DeathAnnouncement
+{
+    void ImGonnaDie(Enemy enemy);
 }
