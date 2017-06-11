@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 
-
+[Serializable]
 public class PlayerLevelStats {
 
 	public int levelNumber { get; set; }
