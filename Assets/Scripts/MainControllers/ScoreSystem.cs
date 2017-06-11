@@ -17,6 +17,7 @@ public class ScoreSystem : MonoBehaviour {
     private int currentLevelScore;
     private int totalScore;
     private int livesGain;
+    private int baseLifeThreshold;
 
 // Use this for initialization
 void Start () {
@@ -26,7 +27,9 @@ void Start () {
         livesGain = savedPlayerData.livesGain;
         currentLevelScore = 0;
 
-        newLifeThreshold += addToThreshoeld * livesGain; 
+        baseLifeThreshold = newLifeThreshold;
+        newLifeThreshold = getNextLifeThreshold();
+        Debug.Log("Threshold: " + newLifeThreshold);
 
         UpdateText(lblTotalScore, totalScore);
         UpdateText(lblLives, currentLives);
@@ -36,6 +39,16 @@ void Start () {
 	void Update () {
 		
 	}
+
+    private int getNextLifeThreshold()
+    {
+        int lastThreshold = 0;
+        for(int i = 0; i <= livesGain; i++)
+        {
+            lastThreshold += addToThreshoeld * i + baseLifeThreshold; 
+        }
+        return lastThreshold;
+    }
 
     public int ReduceLife()
     {
@@ -52,8 +65,7 @@ void Start () {
         if(totalScore >= newLifeThreshold)
         {
             UpdateText(lblLives, ++currentLives);
-            newLifeThreshold += addToThreshoeld;
-            livesGain++;
+            newLifeThreshold += addToThreshoeld * ++livesGain + baseLifeThreshold;
         }
     }
 
