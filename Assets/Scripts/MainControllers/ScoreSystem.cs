@@ -8,6 +8,7 @@ public class ScoreSystem : MonoBehaviour {
     public Text lblTotalScore;
     //public Text lblLevelScore;
     public Text lblLives;
+    public Text lblCombo;
     public int newLifeThreshold = 50;
     [Tooltip("Amount to add on threshold for next new life")]
     public int addToThreshoeld = 50; 
@@ -18,6 +19,9 @@ public class ScoreSystem : MonoBehaviour {
     private int totalScore;
     private int livesGain;
     private int baseLifeThreshold;
+
+    private int comboMultiplier;
+    private int comboScoreStore;
 
 // Use this for initialization
 void Start () {
@@ -32,6 +36,8 @@ void Start () {
 
         UpdateText(lblTotalScore, totalScore);
         UpdateText(lblLives, currentLives);
+
+        this.ComboBreak();
     }
 	
 	// Update is called once per frame
@@ -51,21 +57,58 @@ void Start () {
 
     public int ReduceLife()
     {
+        ComboBreak();
         UpdateText(lblLives, --currentLives);
         return currentLives;
     }
 
+    
     public void IncreaseScore(int amount)
     {
-        currentLevelScore += amount;
-        totalScore += amount;
-        //UpdateText(lblLevelScore, currentLevelScore);
+        comboMultiplier++;
+        comboScoreStore += amount;
+
+        //currentLevelScore += amount;
+        //totalScore += amount;
+        ////UpdateText(lblLevelScore, currentLevelScore);
+        //UpdateText(lblTotalScore, totalScore);
+        //if(totalScore >= newLifeThreshold)
+        //{
+        //    UpdateText(lblLives, ++currentLives);
+        //    newLifeThreshold += addToThreshoeld * ++livesGain + baseLifeThreshold;
+        //}
+        lblCombo.enabled = true;
+        string displayedScore = "+" + comboScoreStore;
+        if(comboMultiplier > 1)
+        {
+            displayedScore += " x" + comboMultiplier;
+        }
+        lblCombo.text = displayedScore;
+        //Color currentColor = lblCombo.color;
+        //lblCombo.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
+    }
+
+    private void SaveStoredScore()
+    {
+        currentLevelScore += comboMultiplier * comboScoreStore;
+        totalScore += comboMultiplier * comboScoreStore;
         UpdateText(lblTotalScore, totalScore);
-        if(totalScore >= newLifeThreshold)
+        if (totalScore >= newLifeThreshold)
         {
             UpdateText(lblLives, ++currentLives);
             newLifeThreshold += addToThreshoeld * ++livesGain + baseLifeThreshold;
         }
+    }
+
+    public void ComboBreak()
+    {
+        lblCombo.enabled = false;
+        SaveStoredScore();
+        comboMultiplier = 0;
+        comboScoreStore = 0;
+
+        //Color currentColor = lblCombo.color;
+        //lblCombo.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
     }
 
     private void UpdateText(Text textObj, int amount)
