@@ -7,6 +7,7 @@ public class PlayerLevelStats {
 
 	public int levelNumber { get; set; }
     public int highscore { get; set; }
+    public int ratingStars { get; set; }
 
     public PlayerLevelStats(int level, int highscore)
     {

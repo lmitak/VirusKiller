@@ -57,7 +57,6 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public void ImGonnaDie(Enemy enemy)
     {
-        Debug.Log(enemy.transform.position);
         enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
     }
 }

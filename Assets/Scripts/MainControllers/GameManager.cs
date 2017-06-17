@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void BallLost()
     {
         int lives = scoreSystem.ReduceLife();
+        scoreSystem.ComboBreak();
 
         if (lives <= 0)
         {
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void GameWon()
     {
         isGameWon = true;
+        scoreSystem.ComboBreak();
         newPlayerData = scoreSystem.GetNewPlayerData();
         playerLevelScore = scoreSystem.GetCurrentLevelScore();
         ball.SetBallKinemtatic(true);
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
 
 
         PlayerLevelStats levelStats = new PlayerLevelStats(currentLevel, playerLevelScore);
+        levelStats.ratingStars = Rating.GetInstance().CalculateRating(playerLevelScore);
         playerData.AddStatsForNewLevel(levelStats);
         playerData.totalScore = newPlayerData.totalScore;
         playerData.totalLives = newPlayerData.totalLives;
