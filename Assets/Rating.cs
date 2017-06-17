@@ -22,22 +22,22 @@ public class Rating : MonoBehaviour {
 
     public int CalculateRating(int score)
     {
-        int rate = 0;
+        int stars = 0;
 
-        if (rate >= threeStarRating)
+        if (score >= threeStarRating)
         {
-            rate = 3;
+            stars = 3;
         }
-        else if (rate >= twoStarRating)
+        else if (score >= twoStarRating)
         {
-            rate = 2;
+            stars = 2;
         }
-        else if (rate >= oneStarRating)
+        else if (score >= oneStarRating)
         {
-            rate = 1;
+            stars = 1;
+ 
         }
-
-        return rate;
+        return stars;
     }
 
     public static Rating GetInstance()

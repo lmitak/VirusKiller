@@ -52,8 +52,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("scoreAmount: " + playerScore);
-
         ///When player uses back button on phone, return him to level selection scene
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -87,16 +85,11 @@ public class GameManager : MonoBehaviour
         gameOverScreen.ShowWinScreen(newPlayerData.totalScore);
     }
 
-    //Save game progress
+    /// <summary>
+    /// Save game progress
+    /// </summary>
     public void GameSave()
     {
-        //playerData.SetLivesLostAndScoreOfLevel(currentLevel,
-        //    playerData.GetLifePoints() - playerLives,
-        //    playerTotalScore - playerData.GetTotalPoints());
-        //playerData.SetLifePoints(playerLives);
-        //playerData.SetTotalPoints(playerTotalScore);
-
-
         PlayerLevelStats levelStats = new PlayerLevelStats(currentLevel, playerLevelScore);
         levelStats.ratingStars = Rating.GetInstance().CalculateRating(playerLevelScore);
         playerData.AddStatsForNewLevel(levelStats);

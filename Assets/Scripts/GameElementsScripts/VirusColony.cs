@@ -9,6 +9,7 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
     public float dropChancePercentage;
     public GameObject[] items;
     public DisplayEnemyValue enemyValueDisplay;
+    public ScoreSystem scoreSystem;
 
     private List<int> unactiveVirusesIndex;
     private bool activeVirusExists;
@@ -58,6 +59,7 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
     public void ImGonnaDie(Enemy enemy)
     {
         enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
+        scoreSystem.IncreaseScore(enemy.points);
     }
 }
 
