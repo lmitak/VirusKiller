@@ -6,15 +6,15 @@ using System.Collections.Generic;
 public class LevelManager : MonoBehaviour {
 
     public List<int> levelsIndex;
-    public static LevelManager lManager;
+    private static LevelManager lmInstance;
 
     void Awake()
     {
-        if(lManager == null)
+        if(lmInstance == null)
         {
             DontDestroyOnLoad(gameObject);
-            lManager = this;
-        }else if(lManager != this)
+            lmInstance = this;
+        }else if(lmInstance != this)
         {
             Destroy(gameObject);
         }
@@ -102,6 +102,11 @@ public class LevelManager : MonoBehaviour {
     public int GetLevelCount()
     {
         return levelsIndex.Count;
+    }
+
+    public static LevelManager GetInstance()
+    {
+        return lmInstance;
     }
 
 }

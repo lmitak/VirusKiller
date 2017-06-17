@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class VirusColony : MonoBehaviour {
+public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public GameManager manager;
     public float dropChancePercentage;
     public GameObject[] items;
+    public DisplayEnemyValue enemyValueDisplay;
 
     private List<int> unactiveVirusesIndex;
     private bool activeVirusExists;
@@ -32,7 +34,7 @@ public class VirusColony : MonoBehaviour {
                 if (unactiveVirusesIndex.IndexOf(i) == -1)
                 {
                     unactiveVirusesIndex.Add(i);
-                    if (Random.Range(0f, 1f) < (dropChancePercentage / 100))    /**try dropping ability by chance**/
+                    if (UnityEngine.Random.Range(0f, 1f) < (dropChancePercentage / 100))    /**try dropping ability by chance**/
                     {
                         Instantiate(items[0], transform.GetChild(i).position, Quaternion.identity);
                     }
@@ -52,4 +54,10 @@ public class VirusColony : MonoBehaviour {
             manager.GameWon();
         }
     }
+
+    public void ImGonnaDie(Enemy enemy)
+    {
+        enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
+    }
 }
+

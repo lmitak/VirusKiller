@@ -18,14 +18,11 @@ public class ResetStats : MonoBehaviour {
         self = this.GetComponent<Button>();
         if (dataController != null)
             self.onClick.AddListener(ResetPlayerData);
-
 	}
 	
 	private void ResetPlayerData()
     {
-        PlayerData newData = new PlayerData();
-        newData.SetLifePoints(dataController.startingLifePoints);
-        dataController.SetPlayerData(newData);
+        dataController.playerData = PlayerData.NewPlayer(dataController.startingLifePoints);
         dataController.Save();
     }
 

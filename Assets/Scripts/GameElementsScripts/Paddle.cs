@@ -9,6 +9,7 @@ public class Paddle : MonoBehaviour {
     public float movementFactor = 15.0f;
     public Sprite stickyPaddleSprite;
     public float accelerationThreshold = .15f;
+    public ScoreSystem scoreSystem;
 
     public enum Buffs
     {
@@ -79,6 +80,9 @@ public class Paddle : MonoBehaviour {
         if (ball != null && buff == Buffs.Sticky)
         {
             ball.PlaceBallOnPaddle(ball.transform.position.x);          
+        } else
+        {
+            scoreSystem.ComboBreak();
         }
     }
 

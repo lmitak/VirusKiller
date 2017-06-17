@@ -9,7 +9,7 @@ public class PlayerStatsDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PlayerData data = GameObject.FindObjectOfType<DataController>().GetPlayerData();
+        PlayerData data = DataController.GetInstance().playerData;
 
         if (data == null)
         {
@@ -18,8 +18,8 @@ public class PlayerStatsDisplay : MonoBehaviour {
         }
         else
         {
-            textLives.text = data.GetLifePoints().ToString();
-            textScore.text = data.GetTotalPoints().ToString();
+            textLives.text = data.totalLives.ToString();
+            textScore.text = data.totalScore.ToString();
         }
 	}
 	

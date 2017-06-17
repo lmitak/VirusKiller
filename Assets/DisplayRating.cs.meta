@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3b03725fbfd0c2d45a9eeb691fddca5a
+timeCreated: 1497687679
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - goldenStarImage: {fileID: 21300000, guid: a3d72c80f3519ec4683b1dee0e49e24d, type: 3}
+  - emptyStarImage: {fileID: 21300000, guid: c8a3b22a962742246869f43f5a3b82c3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

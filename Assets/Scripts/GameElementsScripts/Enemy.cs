@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BlockController : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     public int life;
     public int points;
-    public GameManager manager;
+    public ScoreSystem scoreSystem;
     public AudioClip gruntSound;
     
     
@@ -15,14 +15,14 @@ public class BlockController : MonoBehaviour {
     private int currentLife;
     private AudioSource audioSource;
     private Animator animator;
-
+    private DeathAnnouncement deathAnnouncement;
 
 	// Use this for initialization
 	void Start () {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentLife = life;
-        
+        deathAnnouncement = transform.parent.GetComponent<VirusColony>();
 	}
 	
 	// Update is called once per frame
@@ -54,7 +54,8 @@ public class BlockController : MonoBehaviour {
 
     private void OnDeath()
     {
-        manager.IncreaseScore(points);
+        //manager.IncreaseScore(points);
+        scoreSystem.IncreaseScore(points);
 
         virusDeathParticles.transform.parent = null;
         virusDeathParticles.Play();
@@ -64,6 +65,12 @@ public class BlockController : MonoBehaviour {
         Destroy(virusDeathParticles.gameObject, virusDeathAudio.clip.length);
         //Destroy(gameObject);
         gameObject.SetActive(false);
+        deathAnnouncement.ImGonnaDie(this);
     }
 
+}
+
+public interface DeathAnnouncement
+{
+    void ImGonnaDie(Enemy enemy);
 }
