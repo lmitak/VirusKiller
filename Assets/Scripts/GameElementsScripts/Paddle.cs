@@ -10,6 +10,7 @@ public class Paddle : MonoBehaviour {
     public Sprite stickyPaddleSprite;
     public float accelerationThreshold = .15f;
     public ScoreSystem scoreSystem;
+    public Inventory inventory;
 
     public enum Buffs
     {
@@ -76,14 +77,39 @@ public class Paddle : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
-        if (ball != null && buff == Buffs.Sticky)
-        {
-            ball.PlaceBallOnPaddle(ball.transform.position.x);          
-        } else
+        if(collision.gameObject.tag == "Ball")
         {
             scoreSystem.ComboBreak();
+            if(buff == Buffs.Sticky)
+            {
+                Ball ball = collision.gameObject.GetComponent<Ball>();
+                ball.PlaceBallOnPaddle(ball.transform.position.x);
+            }
+        } 
+        
+        //if (ball != null && buff == Buffs.Sticky)
+        //{
+        //    ball.PlaceBallOnPaddle(ball.transform.position.x);          
+        //} else
+        //{
+        //    scoreSystem.ComboBreak();
+        //}
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Item")
+        {
+            Item item = collider.GetComponent<Item>();
+            Debug.Log(item.GetItemType());
+            if (item.GetItemType() == ItemType.PaddleRelated) 
+            {
+                ((ItemPaddle)item).paddle = this;
+            }
+            Debug.Log(((ItemPaddle)item).paddle);
+            inventory.AddItem(item);
         }
+
     }
 
     public void ApplyStickyPaddle()
