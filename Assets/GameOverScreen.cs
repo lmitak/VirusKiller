@@ -36,33 +36,51 @@ public class GameOverScreen : MonoBehaviour {
         this.DisplayHiddenUIObjects();
         lblTitle.text = winText;
 
-        /**Check if the player has already won this level before**/
-        if (playerData.achievedLevel > currentLevel)
+        ///**Check if the player has already won this level before**/
+        //if (playerData.achievedLevel > currentLevel)
+        //{
+        //    PlayerLevelStats levelStats = playerData.GetPlayerStatsForLevel(currentLevel);
+        //    int oldHighscore = levelStats.highscore;
+        //    /**If his new score is better then the last one, display it as new best score**/
+        //    if (oldHighscore < newScore)
+        //    {
+        //        lblBestScoreAmount.text = newScore.ToString();
+        //        displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
+        //    }
+        //    else
+        //    {
+        //        lblBestScoreAmount.text = oldHighscore.ToString();
+        //        displayRating.SetRating(levelStats.ratingStars);
+        //    }
+        //}
+        //else
+        //{
+        //    lblBestScoreAmount.text = newScore.ToString();
+        //    displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
+        //}
+
+        /// Check if currentLevel was already achieved and if true, check if old highscore is higher than the newScore
+        if(playerData.achievedLevel > currentLevel && playerData.GetPlayerStatsForLevel(currentLevel).highscore > newScore)
         {
-            PlayerLevelStats levelStats = playerData.GetPlayerStatsForLevel(currentLevel);
-            int oldHighscore = levelStats.highscore;
-            /**If his new score is better then the last one, display it as new best score**/
-            if (oldHighscore < newScore)
-            {
-                lblBestScoreAmount.text = newScore.ToString();
-                displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
-            }
-            else
-            {
-                lblBestScoreAmount.text = oldHighscore.ToString();
-                displayRating.SetRating(levelStats.ratingStars);
-            }
+            /// Display old highscore
+            lblBestScoreAmount.text = playerData.GetPlayerStatsForLevel(currentLevel).highscore.ToString();
+            /// Display how many stars player has achieved
+            displayRating.SetRating(playerData.GetPlayerStatsForLevel(currentLevel).ratingStars);
         }
         else
         {
+            /// Display new highscore
             lblBestScoreAmount.text = newScore.ToString();
+            /// Calculate and display how many stars has player achieved
             displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
         }
 
-        
+
     }
 
-    /**Display hidden UI objects**/
+    /// <summary>
+    /// Display hidden UI objects
+    /// </summary>
     private void DisplayHiddenUIObjects()
     {
         lblTitle.gameObject.SetActive(true);

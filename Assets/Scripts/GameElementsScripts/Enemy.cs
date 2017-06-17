@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour {
     public ScoreSystem scoreSystem;
     public AudioClip gruntSound;
     
-    
     public ParticleSystem virusDeathParticles;
     public AudioSource virusDeathAudio;
 
@@ -55,7 +54,7 @@ public class Enemy : MonoBehaviour {
     private void OnDeath()
     {
         //manager.IncreaseScore(points);
-        scoreSystem.IncreaseScore(points);
+        //scoreSystem.IncreaseScore(points);
 
         virusDeathParticles.transform.parent = null;
         virusDeathParticles.Play();
