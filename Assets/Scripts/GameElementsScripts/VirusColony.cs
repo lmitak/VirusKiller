@@ -30,50 +30,6 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 	
 	
 	void Update () {
-        //activeVirusExists = false;
-        //for (int i = 0; i < transform.childCount && transform.childCount > unactiveVirusesIndex.Count; i++)
-        //{
-        //    /**check if active viruses exists**/
-        //    if (!transform.GetChild(i).gameObject.activeSelf)
-        //    {
-        //        /**if virus is not active, check if it is in virus list, if not add it to the list.
-        //         * If virus is already in the list, virus was unactive before this update frame**/
-        //        if (unactiveVirusesIndex.IndexOf(i) == -1)
-        //        {
-        //            unactiveVirusesIndex.Add(i);
-        //            /**try dropping ability by chance**/
-        //            float dice = UnityEngine.Random.Range(0f, 100f);
-        //            if (dice < totalDropChance)    
-        //            {
-        //                // if item should be dropped randomize which item will be dropped
-        //                dice = UnityEngine.Random.Range(0f, 100f);
-
-        //                int itemIndex = 0;
-        //                foreach(RangeInt range in itemsDropRange)
-        //                {
-        //                    if(dice >= range.start && dice <= range.end)
-        //                    {
-        //                        Instantiate(drops[itemIndex].item, transform.GetChild(i).position, Quaternion.identity);
-        //                        break;
-        //                    }
-        //                    itemIndex++;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        activeVirusExists = true;
-        //    }
-
-        //}
-
-        ///**if there is no active viruses game has been won**/
-        //if (!activeVirusExists && !gameWonCalled)
-        //{
-        //    gameWonCalled = true;
-        //    manager.GameWon();
-        //}
     }
     /// <summary>
     /// Called when enemy should die
