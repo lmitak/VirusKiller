@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
 {
     public Ball ball;
+    public Paddle paddle;
     public ScoreSystem scoreSystem;
     public GameOverScreen gameOverScreen;
+    public Inventory inventory;
 
     public int playerLives = 3;
 
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
             playerData = PlayerData.NewPlayer(playerLives);
         }
         isGameWon = false;
+
+        paddle.itemCollectedListener = this;
     }
 
     void Awake()
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             levelManager.LoadLevelSelectionScene();
         }
+        
     }
 
     public void BallLost()
@@ -124,6 +130,18 @@ public class GameManager : MonoBehaviour
         }
 
         levelManager.LoadLevelSelectionScene();
+    }
+
+    public void collectItem(Item item)
+    {
+        if(item.GetItemType() == ItemType.PaddleRelated)
+        {
+            ((ItemPaddle)item).paddle = this.paddle;
+        } else if(item.GetItemType() == ItemType.BallRelated)
+        {
+            ((ItemBall)item).ball = this.ball;
+        }
+        inventory.AddItem(item);
     }
 
 

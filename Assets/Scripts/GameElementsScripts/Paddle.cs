@@ -10,6 +10,7 @@ public class Paddle : MonoBehaviour {
     public Sprite stickyPaddleSprite;
     public float accelerationThreshold = .15f;
     public ScoreSystem scoreSystem;
+    public Inventory inventory;
 
     public enum Buffs
     {
@@ -22,9 +23,21 @@ public class Paddle : MonoBehaviour {
     private Sprite defaultSprite;
     private SpriteRenderer spriteRenderer;
     private Buffs buff;
+    private OnItemCollectedListener _itemCollectedListener;
+    public OnItemCollectedListener itemCollectedListener
+    {
+        get
+        {
+            return this._itemCollectedListener;
+        }
+        set
+        {
+            this._itemCollectedListener = value;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Vector3 upperRightCorner = new Vector3(Screen.width, Screen.height, 0f);
         Vector3 targetWidth = Camera.main.ScreenToWorldPoint(upperRightCorner);
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -76,14 +89,45 @@ public class Paddle : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
-        if (ball != null && buff == Buffs.Sticky)
-        {
-            ball.PlaceBallOnPaddle(ball.transform.position.x);          
-        } else
+        if(collision.gameObject.tag == "Ball")
         {
             scoreSystem.ComboBreak();
+            if(buff == Buffs.Sticky)
+            {
+                Ball ball = collision.gameObject.GetComponent<Ball>();
+                ball.PlaceBallOnPaddle(ball.transform.position.x);
+            }
+        } 
+        
+        //if (ball != null && buff == Buffs.Sticky)
+        //{
+        //    ball.PlaceBallOnPaddle(ball.transform.position.x);          
+        //} else
+        //{
+        //    scoreSystem.ComboBreak();
+        //}
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Item")
+        {
+            Item item = collider.GetComponent<Item>();
+            Debug.Log(item.GetItemType());
+            //if (item.GetItemType() == ItemType.PaddleRelated) 
+            //{
+            //    ((ItemPaddle)item).paddle = this;
+            //    Debug.Log(((ItemPaddle)item).paddle);
+            //}
+            //else if(item.GetItemType() == ItemType.BallRelated)
+            //{
+            //    ((ItemBall)item).ball = 
+            //}
+
+            //inventory.AddItem(item);
+            itemCollectedListener.collectItem(item);
         }
+
     }
 
     public void ApplyStickyPaddle()
@@ -102,4 +146,9 @@ public class Paddle : MonoBehaviour {
     {
         return buff;
     }
+
+    public interface OnItemCollectedListener {
+        void collectItem(Item item);
+    }
 }
+
