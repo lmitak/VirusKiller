@@ -23,9 +23,21 @@ public class Paddle : MonoBehaviour {
     private Sprite defaultSprite;
     private SpriteRenderer spriteRenderer;
     private Buffs buff;
+    private OnItemCollectedListener _itemCollectedListener;
+    public OnItemCollectedListener itemCollectedListener
+    {
+        get
+        {
+            return this._itemCollectedListener;
+        }
+        set
+        {
+            this._itemCollectedListener = value;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Vector3 upperRightCorner = new Vector3(Screen.width, Screen.height, 0f);
         Vector3 targetWidth = Camera.main.ScreenToWorldPoint(upperRightCorner);
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -102,12 +114,18 @@ public class Paddle : MonoBehaviour {
         {
             Item item = collider.GetComponent<Item>();
             Debug.Log(item.GetItemType());
-            if (item.GetItemType() == ItemType.PaddleRelated) 
-            {
-                ((ItemPaddle)item).paddle = this;
-            }
-            Debug.Log(((ItemPaddle)item).paddle);
-            inventory.AddItem(item);
+            //if (item.GetItemType() == ItemType.PaddleRelated) 
+            //{
+            //    ((ItemPaddle)item).paddle = this;
+            //    Debug.Log(((ItemPaddle)item).paddle);
+            //}
+            //else if(item.GetItemType() == ItemType.BallRelated)
+            //{
+            //    ((ItemBall)item).ball = 
+            //}
+
+            //inventory.AddItem(item);
+            itemCollectedListener.collectItem(item);
         }
 
     }
@@ -128,4 +146,9 @@ public class Paddle : MonoBehaviour {
     {
         return buff;
     }
+
+    public interface OnItemCollectedListener {
+        void collectItem(Item item);
+    }
 }
+

@@ -35,30 +35,6 @@ public class GameOverScreen : MonoBehaviour {
     {
         this.DisplayHiddenUIObjects();
         lblTitle.text = winText;
-
-        ///**Check if the player has already won this level before**/
-        //if (playerData.achievedLevel > currentLevel)
-        //{
-        //    PlayerLevelStats levelStats = playerData.GetPlayerStatsForLevel(currentLevel);
-        //    int oldHighscore = levelStats.highscore;
-        //    /**If his new score is better then the last one, display it as new best score**/
-        //    if (oldHighscore < newScore)
-        //    {
-        //        lblBestScoreAmount.text = newScore.ToString();
-        //        displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
-        //    }
-        //    else
-        //    {
-        //        lblBestScoreAmount.text = oldHighscore.ToString();
-        //        displayRating.SetRating(levelStats.ratingStars);
-        //    }
-        //}
-        //else
-        //{
-        //    lblBestScoreAmount.text = newScore.ToString();
-        //    displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
-        //}
-
         /// Check if currentLevel was already achieved and if true, check if old highscore is higher than the newScore
         if(playerData.achievedLevel > currentLevel && playerData.GetPlayerStatsForLevel(currentLevel).highscore > newScore)
         {
@@ -74,8 +50,6 @@ public class GameOverScreen : MonoBehaviour {
             /// Calculate and display how many stars has player achieved
             displayRating.SetRating(Rating.GetInstance().CalculateRating(newScore));
         }
-
-
     }
 
     /// <summary>

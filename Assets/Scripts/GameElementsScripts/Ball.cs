@@ -14,7 +14,18 @@ public class Ball : MonoBehaviour {
     private float ballDiameter;
     private float lastPaddlePosX;
     private float halfPaddleLength;
-    private float speed;
+    private float _speed;
+    public float speed
+    {
+        get
+        {
+            return this._speed;
+        }
+        set
+        {
+            this._speed = value;
+        }
+    }
 
     //states
     private bool ballInGame;
@@ -28,7 +39,7 @@ public class Ball : MonoBehaviour {
         isBallOnPaddle = true;
         ballRB = GetComponent<Rigidbody2D>();
         ballDiameter = GetComponent<SpriteRenderer>().bounds.size.y;
-        speed = initialSpeed;
+        _speed = initialSpeed;
         
         lastPaddlePosX = paddle.transform.position.x;
         halfPaddleLength = paddle.GetComponent<SpriteRenderer>().bounds.extents.x;
@@ -43,8 +54,8 @@ public class Ball : MonoBehaviour {
             /// Keep the ball on constant speed
             //ballRB.velocity = initialSpeed * ballRB.velocity.normalized;
             /// Accelerate the ball
-            speed += speedAccelerationOverTime * Time.deltaTime;
-            ballRB.velocity = speed * ballRB.velocity.normalized;
+            _speed += speedAccelerationOverTime * Time.deltaTime;
+            ballRB.velocity = _speed * ballRB.velocity.normalized;
         }
 
         //PC version input
@@ -67,7 +78,6 @@ public class Ball : MonoBehaviour {
             {
                 paddle.RemoveStickyPaddle();
             }
-
         }
 
         /// If ball is placed on the paddle, move it along with paddle when paddle is moved
@@ -82,6 +92,7 @@ public class Ball : MonoBehaviour {
     public void ResetBallOnPaddle()
     {
         PlaceBallOnPaddle(paddle.transform.position.x);
+        _speed = initialSpeed;
     }
 
     /// <summary>
@@ -147,7 +158,8 @@ public class Ball : MonoBehaviour {
                     ///If it did, then move ball to the right
                     ballRB.velocity = new Vector2(ballRB.velocity.x + hitOffset * collisionOffset, ballRB.velocity.y);
                 }
-            }else
+            }
+            else
             {
                 /**Add additional velocity to ball to prevent infinite loop**/
                 float additionalRandomVelocityX = Random.Range(-(collisionOffset / 2), (collisionOffset / 2));
@@ -160,8 +172,6 @@ public class Ball : MonoBehaviour {
                 popSound.pitch = Random.Range(.8f, 1f);
                 popSound.Play();
             }
-        }
-
-        
+        }   
     }
 }

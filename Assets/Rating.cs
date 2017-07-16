@@ -10,16 +10,6 @@ public class Rating : MonoBehaviour {
 
     private static Rating rating;
 
-	// Use this for initialization
-	void Start () {
-        rating = this;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public int CalculateRating(int score)
     {
         int stars = 0;
@@ -43,5 +33,14 @@ public class Rating : MonoBehaviour {
     public static Rating GetInstance()
     {
         return rating;
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        if (rating == null)
+        {
+            rating = this;
+        }
     }
 }

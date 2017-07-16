@@ -67,16 +67,6 @@ void Start () {
     {
         comboMultiplier++;
         comboScoreStore += amount;
-
-        //currentLevelScore += amount;
-        //totalScore += amount;
-        ////UpdateText(lblLevelScore, currentLevelScore);
-        //UpdateText(lblTotalScore, totalScore);
-        //if(totalScore >= newLifeThreshold)
-        //{
-        //    UpdateText(lblLives, ++currentLives);
-        //    newLifeThreshold += addToThreshoeld * ++livesGain + baseLifeThreshold;
-        //}
         lblCombo.enabled = true;
         string displayedScore = "+" + comboScoreStore;
         if(comboMultiplier > 1)
@@ -84,8 +74,6 @@ void Start () {
             displayedScore += " x" + comboMultiplier;
         }
         lblCombo.text = displayedScore;
-        //Color currentColor = lblCombo.color;
-        //lblCombo.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
     }
 
     private void SaveStoredScore()
@@ -106,9 +94,6 @@ void Start () {
         SaveStoredScore();
         comboMultiplier = 0;
         comboScoreStore = 0;
-
-        //Color currentColor = lblCombo.color;
-        //lblCombo.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0f);
     }
 
     private void UpdateText(Text textObj, int amount)

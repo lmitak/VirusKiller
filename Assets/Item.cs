@@ -6,6 +6,7 @@ public abstract class Item : MonoBehaviour {
 
     public Sprite sprite;
     protected ItemType itemType;
+    public int amount { get; set; }
 
     public abstract void ApplyEffect();
 
@@ -17,6 +18,13 @@ public abstract class Item : MonoBehaviour {
     void Start()
     {
         this.itemType = ItemType.General;
+    }
+
+    public void copyItemProperties(Item otherItem)
+    {
+        this.sprite = otherItem.sprite;
+        this.itemType = otherItem.itemType;
+        this.amount = otherItem.amount;
     }
 
 }
