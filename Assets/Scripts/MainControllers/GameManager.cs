@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
         scoreSystem.ComboBreak();
         newPlayerData = scoreSystem.GetNewPlayerData();
         playerLevelScore = scoreSystem.GetCurrentLevelScore();
-        ball.SetBallKinemtatic(true);
+        ball.ResetBallOnPaddle();
         gameOverScreen.ShowWinScreen(newPlayerData.totalScore);
     }
 
