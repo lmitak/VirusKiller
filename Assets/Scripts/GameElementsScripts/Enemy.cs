@@ -5,7 +5,6 @@ public class Enemy : MonoBehaviour {
 
     public int life;
     public int points;
-    public ScoreSystem scoreSystem;
     public AudioClip gruntSound;
     
     public ParticleSystem virusDeathParticles;

@@ -7,7 +7,6 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public GameManager manager;
     public float totalDropChance;
-    public GameObject[] items;
     public ItemDrop[] drops;
     public DisplayEnemyValue enemyValueDisplay;
     public ScoreSystem scoreSystem;
@@ -31,56 +30,115 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 	
 	
 	void Update () {
-        activeVirusExists = false;
-        for (int i = 0; i < transform.childCount && transform.childCount > unactiveVirusesIndex.Count; i++)
+        //activeVirusExists = false;
+        //for (int i = 0; i < transform.childCount && transform.childCount > unactiveVirusesIndex.Count; i++)
+        //{
+        //    /**check if active viruses exists**/
+        //    if (!transform.GetChild(i).gameObject.activeSelf)
+        //    {
+        //        /**if virus is not active, check if it is in virus list, if not add it to the list.
+        //         * If virus is already in the list, virus was unactive before this update frame**/
+        //        if (unactiveVirusesIndex.IndexOf(i) == -1)
+        //        {
+        //            unactiveVirusesIndex.Add(i);
+        //            /**try dropping ability by chance**/
+        //            float dice = UnityEngine.Random.Range(0f, 100f);
+        //            if (dice < totalDropChance)    
+        //            {
+        //                // if item should be dropped randomize which item will be dropped
+        //                dice = UnityEngine.Random.Range(0f, 100f);
+
+        //                int itemIndex = 0;
+        //                foreach(RangeInt range in itemsDropRange)
+        //                {
+        //                    if(dice >= range.start && dice <= range.end)
+        //                    {
+        //                        Instantiate(drops[itemIndex].item, transform.GetChild(i).position, Quaternion.identity);
+        //                        break;
+        //                    }
+        //                    itemIndex++;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        activeVirusExists = true;
+        //    }
+
+        //}
+
+        ///**if there is no active viruses game has been won**/
+        //if (!activeVirusExists && !gameWonCalled)
+        //{
+        //    gameWonCalled = true;
+        //    manager.GameWon();
+        //}
+    }
+    /// <summary>
+    /// Called when enemy should die
+    /// </summary>
+    /// <param name="enemy">GameObject that should die</param>
+    public void ImGonnaDie(Enemy enemy)
+    {
+        // calculate if item sholud be dropped
+        if(this.ShouldDropItem())
         {
-            /**check if active viruses exists**/
-            if (!transform.GetChild(i).gameObject.activeSelf)
-            {
-                /**if virus is not active, check if it is in virus list, if not add it to the list.
-                 * If virus is already in the list, virus was unactive before this update frame**/
-                if (unactiveVirusesIndex.IndexOf(i) == -1)
-                {
-                    unactiveVirusesIndex.Add(i);
-                    /**try dropping ability by chance**/
-                    float dice = UnityEngine.Random.Range(0f, 100f);
-                    if (dice < totalDropChance)    
-                    {
-                        // if item should be dropped randomize which item will be dropped
-                        dice = UnityEngine.Random.Range(0f, 100f);
-
-                        int itemIndex = 0;
-                        foreach(RangeInt range in itemsDropRange)
-                        {
-                            if(dice >= range.start && dice <= range.end)
-                            {
-                                Instantiate(drops[itemIndex].item, transform.GetChild(i).position, Quaternion.identity);
-                                break;
-                            }
-                            itemIndex++;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                activeVirusExists = true;
-            }
-
+            this.DropItem(enemy.gameObject);
         }
-
-        /**if there is no active viruses game has been won**/
-        if (!activeVirusExists && !gameWonCalled)
+        enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
+        scoreSystem.IncreaseScore(enemy.points);
+        if(AreEnemiesDefeated())
         {
-            gameWonCalled = true;
             manager.GameWon();
         }
     }
 
-    public void ImGonnaDie(Enemy enemy)
+    /// <summary>
+    /// Check if any child in VirusColony is active
+    /// </summary>
+    /// <returns></returns>
+    private bool AreEnemiesDefeated()
     {
-        enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
-        scoreSystem.IncreaseScore(enemy.points);
+        bool activeVirusExists = false;
+        // traverse through all children and check if any is active
+        foreach (Transform child in this.transform)
+        {
+            if(child.gameObject.activeSelf)
+            {
+                activeVirusExists = true;
+                break;
+            }
+        }
+        return !activeVirusExists;
+    }
+
+    /// <summary>
+    /// Checks if item sholud be dropped by comparing totalDropChange with a random number in range of 0 to 100
+    /// Ex: If totalDropChance is 40, than random number must be below 40 to drop an item
+    /// </summary>
+    /// <returns>True if randomized number is less than a totalDropChance</returns>
+    private bool ShouldDropItem()
+    {
+        return UnityEngine.Random.Range(0f, 100f) < totalDropChance;
+    }
+
+    /// <summary>
+    /// Calculate which item sholud be dropped and instantiate GameObject of that type
+    /// </summary>
+    private void DropItem(GameObject enemy)
+    {
+        float dice = UnityEngine.Random.Range(0f, 100f);
+        int i = 0;
+        foreach (RangeInt range in itemsDropRange)
+        {
+            if (dice >= range.start && dice <= range.end)
+            {
+                Instantiate(drops[i].item, enemy.transform.position, Quaternion.identity);
+                break;
+            }
+            i++;
+        }
     }
 
     /// <summary>
