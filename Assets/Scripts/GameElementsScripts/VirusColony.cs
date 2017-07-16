@@ -28,9 +28,8 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
         this.InitItemsDropRange();
 	}
 	
-	
-	void Update () {
-    }
+	void Update () { }
+
     /// <summary>
     /// Called when enemy should die
     /// </summary>
