@@ -6,17 +6,11 @@ using System;
 public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public GameManager manager;
-    public float totalDropChance;
-    public Drop[] drops;
     public DisplayEnemyValue enemyValueDisplay;
-    public ScoreSystem scoreSystem;
-    public GameObject itemPrefab;
 
     private List<int> unactiveVirusesIndex;
     private bool activeVirusExists;
     private bool gameWonCalled;
-    private List<RangeInt> itemsDropRange;
-
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +28,7 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
     public void ImGonnaDie(Enemy enemy)
     {
         manager.EnemySlain(enemy);
-        enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
+        //enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
         if(AreEnemiesDefeated())
         {
             manager.GameWon();

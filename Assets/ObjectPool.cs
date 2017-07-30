@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool instance;
-    public GameObject pooledObject;
     public PooledObject[] poolObjects;
 
     public Dictionary<string, List<GameObject>> pools;
@@ -25,7 +24,6 @@ public class ObjectPool : MonoBehaviour {
     public List<GameObject> InstantiatePooledObjects(GameObject pooledObject, int amount)
     {
         List<GameObject> pool = new List<GameObject>();
-        this.pooledObject = pooledObject;
         while(amount-- > 0)
         {
             GameObject obj = Instantiate<GameObject>(pooledObject);
@@ -51,8 +49,12 @@ public class ObjectPool : MonoBehaviour {
             }
         }
         /// if there are no free objects, instantiate and return a new instance
-        GameObject obj = Instantiate<GameObject>(this.pooledObject);
-        pool.Add(obj);
+        GameObject obj = InstatiatePoolObjectById(poolId);
+        if(obj != null)
+        {
+            pool.Add(obj);
+        }
+
         return obj;
     }
 
@@ -67,6 +69,20 @@ public class ObjectPool : MonoBehaviour {
             List<GameObject> pool = this.InstantiatePooledObjects(obj.prefab, obj.amount);
             pools.Add(obj.id, pool);
         }
+    }
+
+    private GameObject InstatiatePoolObjectById(string poolId)
+    {
+        foreach(PooledObject pooledObj in poolObjects)
+        {
+            if(pooledObj.id.Equals(poolId))
+            {
+                GameObject obj = Instantiate<GameObject>(pooledObj.prefab);
+                obj.SetActive(false);
+                return obj;
+            }
+        }
+        return null;
     }
 }
 
