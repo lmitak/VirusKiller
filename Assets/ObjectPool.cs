@@ -8,18 +8,23 @@ public class ObjectPool : MonoBehaviour {
     public static ObjectPool instance;
     public GameObject pooledObject;
     public int pool = 0;
+    public PooledObject[] poolObjects;
     private List<GameObject> objects;
+
+    public Dictionary<string, List<GameObject>> pools;
 
 	// Use this for initialization
 	void Start () {
         instance = this;
         objects = new List<GameObject>();
 
-        // if pool is set, instantiate that amount of objects
-        if(this.pool != 0 && this.pool != -1)
-        {
-            this.InstantiatePooledObjects(pooledObject, pool);
-        }
+        //// if pool is set, instantiate that amount of objects
+        //if(this.pool != 0 && this.pool != -1)
+        //{
+        //    objects = this.InstantiatePooledObjects(pooledObject, pool);
+        //}
+
+        this.InitPools();
     }
 	
 	// Update is called once per frame
@@ -32,36 +37,56 @@ public class ObjectPool : MonoBehaviour {
     /// </summary>
     /// <param name="pooledObject">Object that will be instantiated</param>
     /// <param name="amount">Amount that needs to be instantiated</param>
-    public void InstantiatePooledObjects(GameObject pooledObject, int amount)
+    public List<GameObject> InstantiatePooledObjects(GameObject pooledObject, int amount)
     {
+        List<GameObject> pool = new List<GameObject>();
         this.pooledObject = pooledObject;
         while(amount-- > 0)
         {
             GameObject obj = Instantiate<GameObject>(pooledObject);
             obj.SetActive(false);
-            objects.Add(obj);
+            pool.Add(obj);
         }
+        return pool;
     }
 
     /// <summary>
     /// Returns first available pooled object
     /// </summary>
     /// <returns>Reference to a game object</returns>
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(string poolId)
     {
-        for(int i = 0; i < objects.Count; i++)
+        List<GameObject> pool = pools[poolId];
+        for(int i = 0; i < pool.Count; i++)
         {
-            if(!objects[i].activeInHierarchy)
+            if(!pool[i].activeInHierarchy)
             {
-                return objects[i];
+                return pool[i];
             }
         }
         /// if there are no free objects, instantiate and return a new instance
         GameObject obj = Instantiate<GameObject>(this.pooledObject);
-        objects.Add(obj);
+        pool.Add(obj);
         return obj;
     }
-    
+
+    private void InitPools()
+    {
+        pools = new Dictionary<string, List<GameObject>>();
+        foreach(PooledObject obj in poolObjects)
+        {
+            List<GameObject> pool = this.InstantiatePooledObjects(obj.prefab, obj.amount);
+            pools.Add(obj.id, pool);
+        }
+    }
+}
+
+[System.Serializable]
+public struct PooledObject
+{
+    public GameObject prefab;
+    public int amount;
+    public string id;
 }
 
 

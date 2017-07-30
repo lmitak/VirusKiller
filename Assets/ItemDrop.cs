@@ -53,7 +53,7 @@ public class ItemDrop : MonoBehaviour {
             if (dice >= range.start && dice <= range.end)
             {
                 //Instantiate(drops[i].item, enemy.transform.position, Quaternion.identity);
-                GameObject dropInstance = ObjectPool.instance.GetPooledObject();
+                GameObject dropInstance = ObjectPool.instance.GetPooledObject("item");
                 dropInstance.transform.position = enemy.transform.position;
                 dropInstance.GetComponent<SpriteRenderer>().sprite = drops[i].item.GetComponent<SpriteRenderer>().sprite;
                 dropInstance.SetActive(true);
