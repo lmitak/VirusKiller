@@ -4,39 +4,24 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour {
 
-    //public PooledObject[] pooledObjects;
     public static ObjectPool instance;
     public GameObject pooledObject;
-    public int pool = 0;
     public PooledObject[] poolObjects;
-    private List<GameObject> objects;
 
     public Dictionary<string, List<GameObject>> pools;
 
 	// Use this for initialization
 	void Start () {
         instance = this;
-        objects = new List<GameObject>();
-
-        //// if pool is set, instantiate that amount of objects
-        //if(this.pool != 0 && this.pool != -1)
-        //{
-        //    objects = this.InstantiatePooledObjects(pooledObject, pool);
-        //}
-
         this.InitPools();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     /// <summary>
     /// Instantiate certain amount of objects
     /// </summary>
     /// <param name="pooledObject">Object that will be instantiated</param>
     /// <param name="amount">Amount that needs to be instantiated</param>
+    /// <returns>List of instatiated objects</returns>
     public List<GameObject> InstantiatePooledObjects(GameObject pooledObject, int amount)
     {
         List<GameObject> pool = new List<GameObject>();
@@ -51,9 +36,10 @@ public class ObjectPool : MonoBehaviour {
     }
 
     /// <summary>
-    /// Returns first available pooled object
+    /// Return first available object in a pool
     /// </summary>
-    /// <returns>Reference to a game object</returns>
+    /// <param name="poolId">String that identifies pool</param>
+    /// <returns>Free GameObject reference</returns>
     public GameObject GetPooledObject(string poolId)
     {
         List<GameObject> pool = pools[poolId];
@@ -70,6 +56,9 @@ public class ObjectPool : MonoBehaviour {
         return obj;
     }
 
+    /// <summary>
+    /// Instantiates all pools and fills them with free objects
+    /// </summary>
     private void InitPools()
     {
         pools = new Dictionary<string, List<GameObject>>();
@@ -81,6 +70,9 @@ public class ObjectPool : MonoBehaviour {
     }
 }
 
+/// <summary>
+/// Structure that describes single object pool
+/// </summary>
 [System.Serializable]
 public struct PooledObject
 {
