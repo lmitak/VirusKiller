@@ -161,18 +161,6 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
             Debug.Log("General item");
         }
         inventory.AddItem(item);
-
-        //Item item = itemDrop.drops[itemId].item.GetComponent<Item>();
-        //Debug.Log(item.GetItemType());
-        //if (item.GetItemType() == ItemType.PaddleRelated)
-        //{
-        //    ((ItemPaddle)item).paddle = this.paddle;
-        //}
-        //else if (item.GetItemType() == ItemType.BallRelated)
-        //{
-        //    ((ItemBall)item).ball = this.ball;
-        //}
-        //inventory.AddItem(item);
     }
 
 

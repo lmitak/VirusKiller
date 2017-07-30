@@ -112,20 +112,7 @@ public class Paddle : MonoBehaviour {
     {
         if (collider.gameObject.tag == "Item")
         {
-            //Item item = collider.GetComponent<ItemDestroy>();
             DropEntity collectedItem = collider.GetComponent<DropEntity>();
-            //Debug.Log(item.GetItemType());
-            //if (item.GetItemType() == ItemType.PaddleRelated) 
-            //{
-            //    ((ItemPaddle)item).paddle = this;
-            //    Debug.Log(((ItemPaddle)item).paddle);
-            //}
-            //else if(item.GetItemType() == ItemType.BallRelated)
-            //{
-            //    ((ItemBall)item).ball = 
-            //}
-
-            //inventory.AddItem(item);
             itemCollectedListener.collectItem(collectedItem.itemId);
         }
     }
