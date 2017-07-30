@@ -97,5 +97,12 @@ public class ItemDrop : MonoBehaviour {
             itemsDropRange.Add(range);
         }
     }
+}
 
+[System.Serializable]
+public struct Drop
+{
+    public GameObject item;
+    [Tooltip("Percentage of Total Drop Chance(Sum of items should be 100)")]
+    public int dropChance;
 }
