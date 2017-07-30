@@ -57,7 +57,7 @@ public class ItemDrop : MonoBehaviour {
                 dropInstance.transform.position = enemy.transform.position;
                 dropInstance.GetComponent<SpriteRenderer>().sprite = drops[i].item.GetComponent<SpriteRenderer>().sprite;
                 dropInstance.SetActive(true);
-                dropInstance.GetComponent<ItemDestroy>().itemId = i;
+                dropInstance.GetComponent<DropEntity>().itemId = i;
                 break;
             }
             i++;

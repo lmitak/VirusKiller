@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDestroy : MonoBehaviour {
+public class DropEntity : MonoBehaviour {
 
     public int itemId;
     private Rigidbody2D rb;
