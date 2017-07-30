@@ -14,7 +14,7 @@ public class ItemDestroy : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<Paddle>() && this.gameObject.activeInHierarchy)
+        if( (collider.GetComponent<Paddle>() || collider.GetComponent<ShredderController>()) && this.gameObject.activeInHierarchy)
         {
             this.Destroy();
         }

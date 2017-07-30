@@ -11,12 +11,6 @@ public class ShredderController : MonoBehaviour {
         if (col.gameObject.GetComponent<Ball>())
         {
             manager.BallLost();
-        }
-        //else destroy the object
-        else
-        {
-            Destroy(col.gameObject);
-        }
-        
+        } 
     }
 }
