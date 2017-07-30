@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreSystem : MonoBehaviour {
-
+public class ScoreSystem : MonoBehaviour
+{
     public Text lblTotalScore;
     //public Text lblLevelScore;
     public Text lblLives;
     public Text lblCombo;
     public int newLifeThreshold = 50;
     [Tooltip("Amount to add on threshold for next new life")]
-    public int addToThreshoeld = 50; 
+    public int addToThreshold = 50; 
 
     private PlayerData savedPlayerData;
     private int currentLives;
@@ -23,8 +23,9 @@ public class ScoreSystem : MonoBehaviour {
     private int comboMultiplier;
     private int comboScoreStore;
 
-// Use this for initialization
-void Start () {
+    // Use this for initialization
+    void Start ()
+    {
         savedPlayerData = DataController.GetInstance().playerData;
         currentLives = savedPlayerData.totalLives;
         totalScore = savedPlayerData.totalScore;
@@ -32,7 +33,7 @@ void Start () {
         currentLevelScore = 0;
 
         baseLifeThreshold = newLifeThreshold;
-        newLifeThreshold = getNextLifeThreshold();
+        newLifeThreshold = GetNextLifeThreshold();
 
         UpdateText(lblTotalScore, totalScore);
         UpdateText(lblLives, currentLives);
@@ -41,16 +42,17 @@ void Start () {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
-    private int getNextLifeThreshold()
+    private int GetNextLifeThreshold()
     {
         int lastThreshold = 0;
         for(int i = 0; i <= livesGain; i++)
         {
-            lastThreshold += addToThreshoeld * i + baseLifeThreshold; 
+            lastThreshold += addToThreshold * i + baseLifeThreshold; 
         }
         return lastThreshold;
     }
@@ -84,7 +86,7 @@ void Start () {
         if (totalScore >= newLifeThreshold)
         {
             UpdateText(lblLives, ++currentLives);
-            newLifeThreshold += addToThreshoeld * ++livesGain + baseLifeThreshold;
+            newLifeThreshold += addToThreshold * ++livesGain + baseLifeThreshold;
         }
     }
 

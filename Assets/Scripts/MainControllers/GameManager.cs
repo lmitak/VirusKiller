@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
 {
     public Ball ball;
     public Paddle paddle;
-    public ScoreSystem scoreSystem;
     public GameOverScreen gameOverScreen;
     public Inventory inventory;
 
@@ -26,6 +25,10 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
     private DataController dataController;
     private PlayerData playerData = null;
     private PlayerData newPlayerData = null;
+
+    private ScoreSystem scoreSystem;
+    private ItemDrop itemDrop;
+
 
     // Use this for initialization
     void Start()
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
         }
         isGameWon = false;
 
+        scoreSystem = gameObject.GetComponent<ScoreSystem>();
+        itemDrop = gameObject.GetComponent<ItemDrop>();
         paddle.itemCollectedListener = this;
     }
 
@@ -132,16 +137,42 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
         levelManager.LoadLevelSelectionScene();
     }
 
-    public void collectItem(Item item)
+    public void EnemySlain(Enemy enemy)
     {
-        if(item.GetItemType() == ItemType.PaddleRelated)
+        scoreSystem.IncreaseScore(enemy.points);
+        itemDrop.HandleItemDrop(enemy.gameObject);
+    }
+
+    public void collectItem(int itemId)
+    {
+        GameObject go = itemDrop.drops[itemId].item;
+
+        Item item = null;
+        if(item = go.GetComponent<ItemPaddle>())
         {
             ((ItemPaddle)item).paddle = this.paddle;
-        } else if(item.GetItemType() == ItemType.BallRelated)
+        }
+        else if(item = go.GetComponent<ItemBall>())
         {
             ((ItemBall)item).ball = this.ball;
         }
+        else
+        {
+            Debug.Log("General item");
+        }
         inventory.AddItem(item);
+
+        //Item item = itemDrop.drops[itemId].item.GetComponent<Item>();
+        //Debug.Log(item.GetItemType());
+        //if (item.GetItemType() == ItemType.PaddleRelated)
+        //{
+        //    ((ItemPaddle)item).paddle = this.paddle;
+        //}
+        //else if (item.GetItemType() == ItemType.BallRelated)
+        //{
+        //    ((ItemBall)item).ball = this.ball;
+        //}
+        //inventory.AddItem(item);
     }
 
 

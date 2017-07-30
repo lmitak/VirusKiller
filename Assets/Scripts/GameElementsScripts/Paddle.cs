@@ -110,10 +110,11 @@ public class Paddle : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "Item")
+        if (collider.gameObject.tag == "Item")
         {
-            Item item = collider.GetComponent<Item>();
-            Debug.Log(item.GetItemType());
+            //Item item = collider.GetComponent<ItemDestroy>();
+            ItemDestroy collectedItem = collider.GetComponent<ItemDestroy>();
+            //Debug.Log(item.GetItemType());
             //if (item.GetItemType() == ItemType.PaddleRelated) 
             //{
             //    ((ItemPaddle)item).paddle = this;
@@ -125,9 +126,8 @@ public class Paddle : MonoBehaviour {
             //}
 
             //inventory.AddItem(item);
-            itemCollectedListener.collectItem(item);
+            itemCollectedListener.collectItem(collectedItem.itemId);
         }
-
     }
 
     public void ApplyStickyPaddle()
@@ -148,7 +148,7 @@ public class Paddle : MonoBehaviour {
     }
 
     public interface OnItemCollectedListener {
-        void collectItem(Item item);
+        void collectItem(int itemId);
     }
 }
 

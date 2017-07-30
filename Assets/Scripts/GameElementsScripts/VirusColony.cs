@@ -7,14 +7,16 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public GameManager manager;
     public float totalDropChance;
-    public ItemDrop[] drops;
+    public Drop[] drops;
     public DisplayEnemyValue enemyValueDisplay;
     public ScoreSystem scoreSystem;
+    public GameObject itemPrefab;
 
     private List<int> unactiveVirusesIndex;
     private bool activeVirusExists;
     private bool gameWonCalled;
     private List<RangeInt> itemsDropRange;
+
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +28,10 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
         itemsDropRange = new List<RangeInt>();
         this.CheckItemDropChance();
         this.InitItemsDropRange();
-	}
+
+        //ObjectPool.instance.InstantiatePooledObjects(new PooledObject(itemPrefab, this.transform.childCount));
+
+    }
 	
 	void Update () { }
 
@@ -37,12 +42,13 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
     public void ImGonnaDie(Enemy enemy)
     {
         // calculate if item sholud be dropped
-        if(this.ShouldDropItem())
-        {
-            this.DropItem(enemy.gameObject);
-        }
+        //if(this.ShouldDropItem())
+        //{
+        //    this.DropItem(enemy.gameObject);
+        //}
+        manager.EnemySlain(enemy);
         enemyValueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
-        scoreSystem.IncreaseScore(enemy.points);
+        //scoreSystem.IncreaseScore(enemy.points);
         if(AreEnemiesDefeated())
         {
             manager.GameWon();
@@ -103,7 +109,7 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
     private bool CheckItemDropChance()
     {
         int sum = 0;
-        foreach(ItemDrop drop in drops)
+        foreach(Drop drop in drops)
         {
             sum += drop.dropChance;
         }
@@ -132,7 +138,7 @@ public class VirusColony : MonoBehaviour, DeathAnnouncement {
 }
 
 [System.Serializable]
-public struct ItemDrop
+public struct Drop
 {
     public GameObject item;
     [Tooltip("Percentage of Total Drop Chance(Sum of items should be 100)")]

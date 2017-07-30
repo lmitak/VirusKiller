@@ -79,10 +79,11 @@ public class Inventory : MonoBehaviour {
             newItem.transform.parent = contentList.transform;
             newItem.copyItemProperties(item);
             Destroy(newItem.GetComponent<Rigidbody2D>());
-            if(newItem.GetItemType() == ItemType.BallRelated)
+            
+            if(item.GetType().IsSubclassOf(typeof (ItemBall)))
             {
                 ((ItemBall)newItem).ball = ((ItemBall)item).ball;
-            } else if (newItem.GetItemType() == ItemType.PaddleRelated)
+            } else if (item.GetType().IsSubclassOf(typeof(ItemPaddle)))
             {
                 ((ItemPaddle)newItem).paddle = ((ItemPaddle)item).paddle;
             }
