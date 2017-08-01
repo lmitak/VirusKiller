@@ -6,7 +6,6 @@ using System;
 public class VirusColony : MonoBehaviour, DeathAnnouncement {
 
     public GameManager manager;
-    public DisplayEnemyValue enemyValueDisplay;
 
     private List<int> unactiveVirusesIndex;
     private bool activeVirusExists;

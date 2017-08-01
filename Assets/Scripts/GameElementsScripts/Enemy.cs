@@ -55,12 +55,12 @@ public class Enemy : MonoBehaviour {
         //manager.IncreaseScore(points);
         //scoreSystem.IncreaseScore(points);
 
-        virusDeathParticles.transform.parent = null;
-        virusDeathParticles.Play();
-        virusDeathAudio.Play();
+        //virusDeathParticles.transform.parent = null;
+        //virusDeathParticles.Play();
+        //virusDeathAudio.Play();
 
 
-        Destroy(virusDeathParticles.gameObject, virusDeathAudio.clip.length);
+        //Destroy(virusDeathParticles.gameObject, virusDeathAudio.clip.length);
         //Destroy(gameObject);
         gameObject.SetActive(false);
         deathAnnouncement.ImGonnaDie(this);

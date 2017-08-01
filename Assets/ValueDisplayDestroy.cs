@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayDestroy : MonoBehaviour {
+public class ValueDisplayDestroy : MonoBehaviour {
 
 
     private GameObject textDisplay;

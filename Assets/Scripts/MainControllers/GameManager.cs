@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
     public Paddle paddle;
     public GameOverScreen gameOverScreen;
     public Inventory inventory;
-    public DisplayEnemyValue valueDisplay;
+    public EnemyValueDisplay valueDisplay;
+    public EnemyExplosion explosion;
 
     public int playerLives = 3;
 
@@ -143,6 +144,7 @@ public class GameManager : MonoBehaviour, Paddle.OnItemCollectedListener
         scoreSystem.IncreaseScore(enemy.points);
         itemDrop.HandleItemDrop(enemy.gameObject);
         valueDisplay.ShowEnemyValue(enemy.points, enemy.transform.position);
+        explosion.Explode(enemy.transform.position);
     }
 
     public void collectItem(int itemId)
